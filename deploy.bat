@@ -1,0 +1,1 @@
+Xcopy /E . C:\xampp\htdocs\hotel /Y > nul
