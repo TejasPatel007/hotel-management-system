@@ -3,7 +3,7 @@
         <section class="container p-5">
                 <div class="intro">
                 <h2 class="text-center p-4">Meetings & Events</h2>
-                <p class="text-center">The Hotel Elite offers the most sophisticated spaces for hosting meetings, conferences, 
+                <p class="text-center">The <?php echo $general_setting['Name'] ?> offers the most sophisticated spaces for hosting meetings, conferences, 
                     conventions, symposiums, banquets and performances with state of the art facilities and amenities. 
                     In fact, the facilities available at pasific, which include meeting rooms, banquet halls and conference rooms, 
                     are one of the largest and most comprehensive in India. Rajendra, with its enormous pillarless area, can be divided 

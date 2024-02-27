@@ -44,15 +44,14 @@ if(isset($_SESSION['loggedUserId'])) {
    <!-- navbar two (when user log in)  -->
    <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-dark" >
     <div class="container">
-      <a class="navbar-brand " href="#"> <i class="fas fa-gem me-4"></i><?php echo $general_setting['Name'] ?></a>
+      <a class="navbar-brand " href="index.php"> <?php echo $general_setting['Name'] ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link"  href="index.php">Home
-                </a>
+            <a class="nav-link"  href="index.php">Home</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="about.php"> About</a>
@@ -108,15 +107,14 @@ if(isset($_SESSION['loggedUserId'])) {
  
 <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-dark" >
     <div class="container">
-      <a class="navbar-brand " href="#"> <i class="fas fa-gem me-4"></i><?php echo $general_setting['Name'] ?></a>
+      <a class="navbar-brand " href="index.php"> <?php echo $general_setting['Name'] ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link"  href="index.php">Home
-                </a>
+            <a class="nav-link"  href="index.php">Home</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="about.php"> About</a>

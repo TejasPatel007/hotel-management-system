@@ -1,4 +1,5 @@
-<?php include('../include/functions.php');
+<?php 
+include('../include/functions.php');
 include('../include/general.php');
 ?>
 <!doctype html>

@@ -25,7 +25,7 @@ if(isset($_POST['bookingId'])){
     $pdf->SetFont('Arial','B',16);
     $pdf->SetFont('helvetica','',10);
     $pdf->SetFont('Arial','B',30);
-    $pdf->Cell(200,5,"THE HOTEL ELITE",0,0,'C');
+    $pdf->Cell(200,5,"THE HOTEL NJ Delight",0,0,'C');
     $pdf->Ln(15);
 
     $pdf->SetFont('Times','',20);
@@ -128,7 +128,7 @@ if(isset($_POST['eventBookingId'])){
     $pdf->SetFont('Arial','B',16);
     $pdf->SetFont('helvetica','',10);
     $pdf->SetFont('Arial','B',30);
-    $pdf->Cell(200,5,"THE HOTEL ELITE",0,0,'C');
+    $pdf->Cell(200,5,"THE HOTEL NJ Delight",0,0,'C');
     $pdf->Ln(15);
 
     $pdf->SetFont('Times','',20);

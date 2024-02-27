@@ -48,7 +48,7 @@ ui-lightness/jquery-ui.css'
  
 <?php 
 include('../include/functions.php');
-
+include('../include/general.php');
 if(isset($_SESSION['loggedUserId'])) {
     $id = $_SESSION['loggedUserId'];
     $s="select * from  users_details where UserId='$id' ";
@@ -62,7 +62,7 @@ if(isset($_SESSION['loggedUserId'])) {
    <!-- navbar two (when user log in)  -->
    <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-dark" >
     <div class="container">
-      <a class="navbar-brand " href="#"> <i class="fas fa-gem me-4"></i>Hotel Elite</a>
+      <a class="navbar-brand " href="#"> <?php echo $general_setting['Name'] ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -127,7 +127,7 @@ if(isset($_SESSION['loggedUserId'])) {
  
 <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-dark" >
     <div class="container">
-      <a class="navbar-brand " href="#"> <i class="fas fa-gem me-4"></i>   Hotel Elite</a>
+      <a class="navbar-brand " href="#"> <?php echo $general_setting['Name'] ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

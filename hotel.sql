@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2021 at 05:40 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.3.25
+-- Generation Time: Feb 27, 2024 at 06:38 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,7 +33,7 @@ CREATE TABLE `contact` (
   `LastName` varchar(50) NOT NULL,
   `Email` text NOT NULL,
   `Message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contact`
@@ -63,17 +63,17 @@ CREATE TABLE `event_booking` (
   `Email` text NOT NULL,
   `Phone_number` bigint(10) NOT NULL,
   `Status` enum('Rejected','Cancelled','Paid','Booked','CheckedOut') NOT NULL DEFAULT 'Booked'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `event_booking`
 --
 
 INSERT INTO `event_booking` (`BookingId`, `EventId`, `User_id`, `Date`, `Modified_date`, `Event_date`, `NoOfGuest`, `EventTime`, `Package`, `Amount`, `Email`, `Phone_number`, `Status`) VALUES
-(12, 18, 5, '2021-10-12', '2021-10-12 15:04:50', '2021-10-14', '200-250', '09:00:00', 8, 16000, 'rajesh@gmail.com', 8574526352, 'Rejected'),
-(13, 22, 5, '2021-08-04', '2021-08-06 15:06:29', '2021-08-14', '250-300', '09:30:00', 8, 9600, 'rajesh@gmail.com', 8574859652, 'CheckedOut'),
-(14, 19, 15, '2021-10-12', '2021-10-12 15:11:32', '2021-12-09', '100-200', '09:00:00', 8, 16000, 'rakesh@gmail.com', 8563526352, 'Paid'),
-(15, 20, 15, '2021-10-12', '2021-10-12 15:12:02', '2021-11-20', '200-250', '10:00:00', 4, 8000, 'rakesh@gmail.com', 7545859652, 'Paid');
+(12, 18, 5, '2021-10-12', '2021-10-12 20:04:50', '2021-10-14', '200-250', '09:00:00', 8, 16000, 'rajesh@gmail.com', 8574526352, 'Rejected'),
+(13, 22, 5, '2021-08-04', '2021-08-06 20:06:29', '2021-08-14', '250-300', '09:30:00', 8, 9600, 'rajesh@gmail.com', 8574859652, 'CheckedOut'),
+(14, 19, 15, '2021-10-12', '2021-10-12 20:11:32', '2021-12-09', '100-200', '09:00:00', 8, 16000, 'rakesh@gmail.com', 8563526352, 'Paid'),
+(15, 20, 15, '2021-10-12', '2021-10-12 20:12:02', '2021-11-20', '200-250', '10:00:00', 4, 8000, 'rakesh@gmail.com', 7545859652, 'Paid');
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE `event_list` (
   `HallNumber` bigint(10) NOT NULL,
   `Status` enum('active','in-active') NOT NULL,
   `Booking_status` enum('Booked','Available') NOT NULL DEFAULT 'Available'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `event_list`
@@ -117,7 +117,7 @@ CREATE TABLE `event_payment` (
   `PaymentDate` date NOT NULL DEFAULT current_timestamp(),
   `Amount` int(50) NOT NULL,
   `Status` enum('Paid') NOT NULL DEFAULT 'Paid'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `event_payment`
@@ -141,7 +141,7 @@ CREATE TABLE `event_type` (
   `Description` text NOT NULL,
   `Cost` double NOT NULL,
   `Status` enum('active','in-active') NOT NULL DEFAULT 'active'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `event_type`
@@ -166,19 +166,19 @@ CREATE TABLE `general_settings` (
   `City` varchar(10) NOT NULL,
   `State` varchar(10) NOT NULL,
   `Country` varchar(10) NOT NULL,
-  `Zip_code` bigint(10) NOT NULL,
+  `Zip_code` varchar(6) NOT NULL,
   `Email` text NOT NULL,
   `Phone_number` bigint(10) NOT NULL,
-  `Telephone_number` bigint(10) NOT NULL,
+  `Telephone_number` varchar(10) NOT NULL,
   `Description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `general_settings`
 --
 
 INSERT INTO `general_settings` (`ID`, `Name`, `Address_line1`, `Address_line2`, `City`, `State`, `Country`, `Zip_code`, `Email`, `Phone_number`, `Telephone_number`, `Description`) VALUES
-(1, 'Hotel Elite', ' Address:No. 63', 'Mount Road,Guindy', 'Chennai', 'TamilNadu', 'India', 600015, 'elite@gmail.com', 9658968555, 123456789, ' Whether you book a hotel online, on the phone, or through a travel agent, it should be a simple process.                  It should be easy to contact a knowledgeable, helpful person');
+(1, 'Hotel NJ Delight', '11 Dayton Dr', '', 'Edison', 'NJ', 'USA', '08820', 'patelt18@montclair.edu', 9082931782, '', 'Book Hotel NJ Delight for different purposes. We have various rooms and conference halls for professional meetings.');
 
 -- --------------------------------------------------------
 
@@ -199,21 +199,21 @@ CREATE TABLE `room_booking` (
   `Email` text NOT NULL,
   `Phone_number` bigint(10) NOT NULL,
   `Status` enum('Rejected','Cancelled','Paid','Booked','CheckedOut') NOT NULL DEFAULT 'Booked'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `room_booking`
 --
 
 INSERT INTO `room_booking` (`BookingId`, `RoomId`, `User_id`, `Date`, `Modified_date`, `CheckIn`, `CheckOut`, `NoOfGuest`, `Amount`, `Email`, `Phone_number`, `Status`) VALUES
-(27, 20, 5, '2021-10-12', '2021-10-12 15:01:44', '2021-10-13', '2021-10-15', '2', 4000, 'rajesh@gmail.com', 8596526352, 'Paid'),
-(28, 13, 5, '2021-10-12', '2021-10-12 15:02:20', '2021-10-20', '2021-10-22', '1', 2400, 'rajesh@gmail.com', 8542526352, 'Cancelled'),
-(29, 21, 5, '2021-10-12', '2021-10-12 15:05:32', '2021-11-03', '2021-11-05', '1', 4000, 'rajesh@gmail.com', 8596857452, 'Rejected'),
-(30, 22, 15, '2021-10-12', '2021-10-12 15:08:36', '2021-12-02', '2021-12-03', '1', 1750, 'rakesh@gmail.com', 9685745241, 'Paid'),
-(31, 13, 15, '2021-10-12', '2021-10-12 15:09:00', '2021-11-11', '2021-11-13', '2', 2400, 'rakesh@gmail.com', 7485965263, 'Cancelled'),
-(32, 16, 15, '2021-10-12', '2021-10-12 15:09:31', '2021-11-18', '2021-11-20', '2', 3600, 'rakesh@gmail.com', 9652635241, 'Paid'),
-(33, 29, 15, '2021-10-12', '2021-10-12 15:10:07', '2021-10-14', '2021-10-23', '1', 31500, 'rakesh@gmail.com', 8541526352, 'Paid'),
-(34, 18, 15, '2021-10-12', '2021-10-12 15:10:42', '2021-11-11', '2021-11-13', '2', 3600, 'rakesh@gmail.com', 8585968563, 'Booked');
+(27, 20, 5, '2021-10-12', '2021-10-12 20:01:44', '2021-10-13', '2021-10-15', '2', 4000, 'rajesh@gmail.com', 8596526352, 'Paid'),
+(28, 13, 5, '2021-10-12', '2021-10-12 20:02:20', '2021-10-20', '2021-10-22', '1', 2400, 'rajesh@gmail.com', 8542526352, 'Cancelled'),
+(29, 21, 5, '2021-10-12', '2021-10-12 20:05:32', '2021-11-03', '2021-11-05', '1', 4000, 'rajesh@gmail.com', 8596857452, 'Rejected'),
+(30, 22, 15, '2021-10-12', '2021-10-12 20:08:36', '2021-12-02', '2021-12-03', '1', 1750, 'rakesh@gmail.com', 9685745241, 'Paid'),
+(31, 13, 15, '2021-10-12', '2021-10-12 20:09:00', '2021-11-11', '2021-11-13', '2', 2400, 'rakesh@gmail.com', 7485965263, 'Cancelled'),
+(32, 16, 15, '2021-10-12', '2021-10-12 20:09:31', '2021-11-18', '2021-11-20', '2', 3600, 'rakesh@gmail.com', 9652635241, 'Paid'),
+(33, 29, 15, '2021-10-12', '2021-10-12 20:10:07', '2021-10-14', '2021-10-23', '1', 31500, 'rakesh@gmail.com', 8541526352, 'Paid'),
+(34, 18, 15, '2021-10-12', '2021-10-12 20:10:42', '2021-11-11', '2021-11-13', '2', 3600, 'rakesh@gmail.com', 8585968563, 'Booked');
 
 -- --------------------------------------------------------
 
@@ -227,7 +227,7 @@ CREATE TABLE `room_list` (
   `RoomNumber` bigint(10) NOT NULL,
   `Status` enum('active','in-active') NOT NULL,
   `Booking_status` enum('Booked','Available') NOT NULL DEFAULT 'Available'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `room_list`
@@ -268,7 +268,7 @@ CREATE TABLE `room_payment` (
   `PaymentDate` date NOT NULL DEFAULT current_timestamp(),
   `Amount` int(50) NOT NULL,
   `Status` enum('Paid') NOT NULL DEFAULT 'Paid'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `room_payment`
@@ -293,7 +293,7 @@ CREATE TABLE `room_type` (
   `Description` text NOT NULL,
   `Cost` double NOT NULL,
   `Status` enum('active','in-active') NOT NULL DEFAULT 'active'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `room_type`
@@ -325,7 +325,7 @@ CREATE TABLE `users_details` (
   `Gender` varchar(50) NOT NULL,
   `ProfileImage` text NOT NULL DEFAULT 'user.png',
   `Status` enum('active','in-active') NOT NULL DEFAULT 'active'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users_details`

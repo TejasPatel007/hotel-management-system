@@ -11,7 +11,7 @@
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img src="assets/picture/icons/thumbs-up.png" alt="" class="img-fluid mb-3 d-none d-md-block">
             <h1>Create an Account</h1>
-            <p class="font-italic text-muted mb-0">Information provided below will be used to sign in to your Hotel Elite account.</p>
+            <p class="font-italic text-muted mb-0">Information provided below will be used to sign in to your <?php echo $general_setting['Name'] ?> account.</p>
           
             </p>
         </div>

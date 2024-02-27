@@ -7,24 +7,20 @@
     >
       <!-- Left -->
       <div class="me-5 d-none d-lg-block">
-        <span>Get connected with us on social networks:</span>
+        <span>Get connected with us on social networks </span>
       </div>
       <!-- Left -->
   
       <!-- Right -->
       <div>
        
-        <a href="https://twitter.com/vengade87802870" class="ml-4 text-reset">
-          <i class="fab fa-twitter"></i>
-        </a>
-
-        <a href="https://instagram.com/vengadesh_ks" class="ml-4 text-reset">
+        <a href="https://instagram.com/tejaspatel9396" class="ml-4 text-reset">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/in/vengadesh-ks-8297581b3/" class="ml-4 text-reset">
+        <a href="https://www.linkedin.com/in/tejaspatel9396" class="ml-4 text-reset">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/vengadeshks" class="ml-4 text-reset">
+        <a href="https://github.com/TejasPatel007" class="ml-4 text-reset">
           <i class="fab fa-github"></i>
         </a>
       </div>
@@ -41,7 +37,7 @@
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
             <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3"></i><?php echo $general_setting['Name'] ?>
+              <?php echo $general_setting['Name'] ?>
             </h6>
             <p>
               <!-- Description  -->
@@ -98,18 +94,20 @@
             <h6 class="text-uppercase fw-bold mb-4">
               Contact
             </h6>
-            <p><i class="fas fa-home me-3"></i><?php echo $general_setting['Address_line1'] ?>,
-             <?php echo $general_setting['Address_line2'] ?>,
+            <p><i class="fas fa-home me-3"></i>
+            <a style="color: #ffffff; text-decoration: none;" href="http://maps.google.com/?q=<?php echo $general_setting['Address_line1'] ?>, <?php echo $general_setting['City'] ?>, <?php echo $general_setting['State'] ?>, <?php echo $general_setting['Country'] ?> <?php echo $general_setting['Zip_code'] ?>">
+            <?php echo $general_setting['Address_line1'] ?>,
              <?php echo $general_setting['City'] ?>,
-             <?php echo $general_setting['State'] ?>,</p>
-             <p>Country :<?php echo $general_setting['Country'] ?>,</p>
-             <p>  Pin Code :<?php echo $general_setting['Zip_code'] ?> </p>
+             <?php echo $general_setting['State'] ?>,
+             <?php echo $general_setting['Country'] ?> 
+             <?php echo $general_setting['Zip_code'] ?> </a></p>
             <p>
               <i class="fas fa-envelope me-3"></i>
-              <?php echo $general_setting['Email'] ?>
+              <a style="color: #ffffff; text-decoration: none;" href="mailto:<?php echo $general_setting['Email'] ?>"><?php echo $general_setting['Email'] ?></a>
             </p>
-            <p><i class="fas fa-phone me-3"></i>     <?php echo $general_setting['Phone_number'] ?> </p>
-            <p><i class="fas fa-print me-3"></i>     <?php echo $general_setting['Telephone_number'] ?> </p>
+            <p><i class="fas fa-phone me-3"></i>
+            <a style="color: #ffffff; text-decoration: none;" href="tel:<?php echo $general_setting['Phone_number'] ?>"><?php echo $general_setting['Phone_number'] ?></a> </p>
+            
           </div>
           <!-- Grid column -->
         </div>

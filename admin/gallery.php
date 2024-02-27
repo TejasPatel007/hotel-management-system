@@ -127,7 +127,7 @@ if(!isset($_SESSION['loggedUserId'])) {
 
 <div class="container">
             <div class="intro">
-                <h2 class="text-center">Hotel Elite Gallery</h2>
+                <h2 class="text-center"><?php echo $general_setting['Name'] ?> Gallery</h2>
                 <p class="text-center">All the gallery images, Hover and Delete the images</p>
             </div>
            
