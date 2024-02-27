@@ -19,7 +19,6 @@ include('../include/general.php');
 		<!-- own styling  -->
 		<link rel="stylesheet" href="../assets/css/adminStyle.css">
 		<link rel="stylesheet" href="../assets/css/form_style.css">
-		<link rel="stylesheet" href="../assets/css/gallery.css">
 		<link rel="stylesheet" href="../assets/css/booking_card.css">
 
 		<!-- Jquery data tables pagination  -->
@@ -50,9 +49,6 @@ include('../include/general.php');
 				<li class="nav-item">
 					<a class="tab" href="dashboard.php">Dashboard</a>
 				</li>
-				<li class="nav-item">
-					<a class="tab" href="gallery.php">Gallery</a>
-				</li >
 				<li class="nav-item">
 					<a class="tab" href="user.php">Users</a>
 				</li>

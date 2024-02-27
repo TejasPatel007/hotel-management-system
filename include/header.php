@@ -21,7 +21,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Styling -->
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/gallery.css">
 <link rel="stylesheet" href="assets/css/form_style.css">
 </head>
 <body>
@@ -52,12 +51,6 @@ if(isset($_SESSION['loggedUserId'])) {
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link"  href="index.php">Home</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="about.php"> About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="gallery.php">Gallery</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="service.php">Services</a>
@@ -115,12 +108,6 @@ if(isset($_SESSION['loggedUserId'])) {
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link"  href="index.php">Home</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="about.php"> About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="gallery.php">Gallery</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="service.php">Services</a>

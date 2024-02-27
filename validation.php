@@ -22,9 +22,6 @@ if(isset($_POST['user_login'])){
 
         $_SESSION['loggedUserName']=$row['FirstName'];
         $_SESSION['loggedUserId']=$row['UserId'];
-       
-        
-            
     }
     else{
         $error="Invalid Username and Password !";

@@ -62,16 +62,10 @@
               Useful Links
             </h6>
             <p>
-              <a href="#!" class="text-reset">Terms & Conditions</a>
+              <a href="room.php" class="text-reset">Rooms</a>
             </p>
             <p>
-              <a href="#!" class="text-reset">Privacy and Policy</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Rooms</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Meeting & Events</a>
+              <a href="event.php" class="text-reset">Meeting & Events</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -83,16 +77,10 @@
               Quick links
             </h6>
             <p>
-              <a href="#!" class="text-reset">About</a>
+              <a href="../service.php" class="text-reset">Services</a>
             </p>
             <p>
-              <a href="#!" class="text-reset">Services</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Gallery</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Contact us</a>
+              <a href="../contact.php" class="text-reset">Contact us</a>
             </p>
           </div>
           <!-- Grid column -->

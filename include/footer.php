@@ -53,12 +53,6 @@
               Useful Links
             </h6>
             <p>
-              <a href="#!" class="text-reset">Terms & Conditions</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Privacy and Policy</a>
-            </p>
-            <p>
               <a href="client/room.php" class="text-reset">Rooms</a>
             </p>
             <p>
@@ -74,13 +68,7 @@
               Quick links
             </h6>
             <p>
-              <a href="about.php" class="text-reset">About</a>
-            </p>
-            <p>
               <a href="service.php" class="text-reset">Services</a>
-            </p>
-            <p>
-              <a href="gallery.php" class="text-reset">Gallery</a>
             </p>
             <p>
               <a href="contact.php" class="text-reset">Contact us</a>
