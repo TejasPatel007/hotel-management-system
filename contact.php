@@ -5,8 +5,6 @@
 		<div class="col-md-8 mx-auto">
 		<div class="message"></div>
 			<div class="contact-form">
-				<h1>Contact Us</h1>
-				<p class="hint-text">We'd love to hear from you, please drop us a line if you've any query.</p>
 				<form id="contact-form" action="functions.php" method="post"  autocomplete="off">
 					<div class="row">
 						<div class="col-sm-6">

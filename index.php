@@ -3,10 +3,6 @@
  <!-- Page Content -->
 
  <section class="py-5 white-section" id="introduction" >
-   <div class="container">
-     <h1 class="display-4 title"><?php echo $general_setting['Name'] ?>,luxury collections ,chennai.</h1>
-     <p class="lead">The well-connected roads with transportation system and with safty measures of clients</p>
-   </div>
 
    <div class="container"> 
        
