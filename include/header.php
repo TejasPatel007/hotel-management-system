@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- bootstrap  -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -20,6 +19,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Styling -->
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/form_style.css">
 </head>
@@ -82,9 +82,9 @@ if(isset($_SESSION['loggedUserId'])) {
           <?php echo $user_details['FirstName']; ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="../../Hotel/client/dashboard.php">Dashboard</a>
-          <a class="dropdown-item" href="../../Hotel/client/account.php">Edit Profile</a>
-          <a class="dropdown-item" href="../../Hotel/destroy.php">Log Out</a>
+          <a class="dropdown-item" href="../../HMS/client/dashboard.php">Dashboard</a>
+          <a class="dropdown-item" href="../../HMS/client/account.php">Edit Profile</a>
+          <a class="dropdown-item" href="../../HMS/destroy.php">Log Out</a>
         </div>
       </li>   
         </ul>

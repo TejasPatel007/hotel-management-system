@@ -1,53 +1,53 @@
 
 
 // display the event types with ajax
-function eventBooking(value,msg,err){
-    var Data = {
-        eventBooking:true,
-        filter : value
+function eventBooking(value, msg, err) {
+  var Data = {
+    eventBooking: true,
+    filter: value
+  }
+  if (msg != "") {
+    Data.msg = msg;
+  }
+  if (err != "") {
+    Data.error = err;
+  }
+
+  $.ajax({
+    url: "fetchData.php",
+    type: "POST",
+    data: Data,
+    beforeSend: function () {
+      $('#contentArea').html("<br><br><span>Working...</span>");
+    },
+    success: function (data) {
+      $('#contentArea').html(data);
+      $('table').DataTable({
+        paging: true,
+        ordering: true,
+        searching: true
+      });
+
+    },
+    error: function (data) {
+      console.log("error");
+      console.log(data);
     }
-    if(msg!=""){
-        Data.msg = msg;
-      }
-      if(err!=""){
-        Data.error = err;
-      }
 
-    $.ajax({
-        url:"fetchData.php",
-        type:"POST",
-        data:Data,
-        beforeSend:function(){
-            $('#contentArea').html("<br><br><span>Working...</span>");
-          },
-          success:function(data){
-            $('#contentArea').html(data);
-            $('table').DataTable({
-              paging:true,
-              ordering:true,
-              searching:true
-            });
-         
-          },
-          error: function(data){
-            console.log("error");
-            console.log(data);
-        }
-
-    })
+  })
 }
 
 //showing the details of booking through modal
-function showDetails(bookingId){
-  $.post('admin_functions.php',{bookingId:bookingId,eventBookingDetail:true},function(data,status){
-    
-     bookingData = JSON.parse(data);
-     var newDate = new Date(bookingData.Date);
-     var bookingDate = newDate.getDate();
-     var bookingMonth = newDate.toLocaleString('default', { month: 'short' });
-    
+function showDetails(bookingId) {
+  $.post('admin_functions.php', { bookingId: bookingId, eventBookingDetail: true }, function (data, status) {
 
-     var inserCard =`<div class="card-header no-border">
+    bookingData = JSON.parse(data);
+    var newDate = new Date(bookingData.Date);
+    var bookingDate = newDate.getDate();
+    var bookingMonth = newDate.toLocaleString('default', { month: 'short' });
+
+
+    var inserCard = `<div class="card-header no-border">
      <h5 class="card-title">${bookingData.Status}</h5>
  </div>
  <div class="card-body pt-0">
@@ -81,15 +81,15 @@ function showDetails(bookingId){
          </div>	
      </div>
  </div>`;
-   
+
     $('#details').html(inserCard);
-    
+
   });
   $('#detailModal').modal("show");
 }
 
 // set the status paid 
-function setPaid(bID){
+function setPaid(bID) {
 
   $('#eventBookingId').val(bID);
   $('#paymentModal').modal('show');
@@ -98,105 +98,105 @@ function setPaid(bID){
 
 // set the status cancel
 
-function setReject(bookingId){
-    console.log(bookingId);
-    $.ajax({
-      url:"status_functions.php",
-      type:"POST",
-      data:{
-        eventBookingRejected : true,
-        bookingId : bookingId
-      },
-      success:function(data){      
-        console.log("success");
-        console.log(data);
-        var json = JSON.parse(data);
-        if(json['error']!=""){
-            eventBooking("","",json['error']);
-        }else{
-            eventBooking("",json['msg'],"");
-        }
-        
-         
-     },
-     error: function(data){
-         console.log("error");
-         console.log(data);
-     }
-    });
+function setReject(bookingId) {
+  console.log(bookingId);
+  $.ajax({
+    url: "status_functions.php",
+    type: "POST",
+    data: {
+      eventBookingRejected: true,
+      bookingId: bookingId
+    },
+    success: function (data) {
+      console.log("success");
+      console.log(data);
+      var json = JSON.parse(data);
+      if (json['error'] != "") {
+        eventBooking("", "", json['error']);
+      } else {
+        eventBooking("", json['msg'], "");
+      }
+
+
+    },
+    error: function (data) {
+      console.log("error");
+      console.log(data);
+    }
+  });
 
 }
 
-function setFree(bookingId){
-    console.log(bookingId);
-    $.ajax({
-      url:"status_functions.php",
-      type:"POST",
-      data:{
-        eventBookingCheckedOut : true,
-        bookingId : bookingId
-      },
-      success:function(data){      
-        console.log("success");
-        console.log(data);
-        var json = JSON.parse(data);
-        if(json['error']!=""){
-            eventBooking("","",json['error']);
-        }else{
-            eventBooking("",json['msg'],"");
-        }
-        
-         
-     },
-     error: function(data){
-         console.log("error");
-         console.log(data);
-     }
-    });
+function setFree(bookingId) {
+  console.log(bookingId);
+  $.ajax({
+    url: "status_functions.php",
+    type: "POST",
+    data: {
+      eventBookingCheckedOut: true,
+      bookingId: bookingId
+    },
+    success: function (data) {
+      console.log("success");
+      console.log(data);
+      var json = JSON.parse(data);
+      if (json['error'] != "") {
+        eventBooking("", "", json['error']);
+      } else {
+        eventBooking("", json['msg'], "");
+      }
+
+
+    },
+    error: function (data) {
+      console.log("error");
+      console.log(data);
+    }
+  });
 
 }
 
 
 // Document Ready Function 
-$(document).ready(function(){
+$(document).ready(function () {
 
-    eventBooking("","","");
-    $("#eventBookingFilter").on("change",function(){
-        var value = $(this).val();
-        eventBooking(value,"","");
+  eventBooking("", "", "");
+  $("#eventBookingFilter").on("change", function () {
+    var value = $(this).val();
+    eventBooking(value, "", "");
+  });
+
+  //payment listener
+  $('#modal-payment').on('submit', function (e) {
+
+    e.preventDefault();
+    var formData = new FormData(this);
+
+    $.ajax({
+      url: "status_functions.php",
+      type: "POST",
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        console.log("success");
+        console.log(data);
+        $('#paymentModal').modal('hide')
+        var json = JSON.parse(data);
+        if (json['error'] != "") {
+          eventBooking("", "", json['error']);
+        } else {
+          eventBooking("", json['msg'], "");
+        }
+
+
+      },
+      error: function (data) {
+        console.log("error");
+        console.log(data);
+      }
     });
+  });
 
-    //payment listener
-    $('#modal-payment').on('submit',function(e){
-
-      e.preventDefault();
-      var formData = new FormData(this);
-
-      $.ajax({
-        url:"status_functions.php",
-        type:"POST",
-        data:formData,
-        cache:false,
-        contentType: false,
-        processData: false,
-        success:function(data){      
-          console.log("success");
-          console.log(data);
-          $('#paymentModal').modal('hide')
-          var json = JSON.parse(data);
-          if(json['error']!=""){
-              eventBooking("","",json['error']);
-          }else{
-              eventBooking("",json['msg'],"");
-          }
-          
-           
-       },
-       error: function(data){
-           console.log("error");
-           console.log(data);
-       }
-      });
-    });
-    
 });

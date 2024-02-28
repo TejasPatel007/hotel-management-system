@@ -4,20 +4,21 @@ include('dbConnect.php');
 
 
 //generate id for all the table in data base
-function generateId($prefix,$table,$id,$con){
+function generateId($prefix, $table, $id, $con)
+{
     $query = "select * FROM  $table  order by $id desc limit 1";
-    $result = mysqli_query($con,$query) or die("can't select");
+    $result = mysqli_query($con, $query) or die("can't select");
 
     $last_row = mysqli_fetch_assoc($result);
     $last_id = $last_row[$id];
 
-        if($last_id==" "){
-            $new_id = 1;
-        }else{
-           
-            $new_id = intval($last_id);
-            //$new_id = $prefix .($new_id+1);
-        }
+    if ($last_id == " ") {
+        $new_id = 1;
+    } else {
+
+        $new_id = intval($last_id);
+        //$new_id = $prefix .($new_id+1);
+    }
     return $new_id;
 }
 

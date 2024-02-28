@@ -41,43 +41,7 @@
                </p>
                
       </div>       
-   </section>    
-   
-<script>
-	$(document).ready(function(){
-	$('#contact-form').on('submit',function(e){
-	  e.preventDefault();
-      var formData = new FormData(this);
-
-      $.ajax({
-        url:"functions.php",
-        type:"POST",
-        data:formData,
-        cache:false,
-        contentType: false,
-        processData: false,
-        success:function(data){      
-			console.log("data");
-		  console.log(data);
-          var json = JSON.parse(data);
-          if(json['error']!=""){
-             $('.message').html(`<div class="alert alert-danger" role="alert"> ${json['error']}  </div>`);
-			 $('#contact-form')[0].reset();
-          }else{
-			$('.message').html(`<div class="alert alert-success" role="alert"> ${json['msg']}  </div>`);
-			$('#contact-form')[0].reset();
-          }
-          
-           
-       },
-       error: function(data){
-           console.log("error");
-           console.log(data);
-       }
-      });
-		})
-	})
-</script>
+   </section>   
 
     
 <?php include('include/footer.php') ?>

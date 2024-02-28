@@ -1,22 +1,22 @@
 
 // display the room types with ajax
-function displayEventTypes(value){
+function displayEventTypes(value) {
 
     $.ajax({
-        url:"fetchData.php",
-        type:"POST",
-        data:{
-            eventType:true,
-            filter : value
+        url: "fetchData.php",
+        type: "POST",
+        data: {
+            eventType: true,
+            filter: value
         },
-        beforeSend:function(){
+        beforeSend: function () {
             $('#contentArea').html("<br><br><span>Working...</span>");
-          },
-          success:function(data){
+        },
+        success: function (data) {
             $('#contentArea').html(data);
-         
-          },
-          error: function(data){
+
+        },
+        error: function (data) {
             console.log("error");
             console.log(data);
         }
@@ -24,10 +24,10 @@ function displayEventTypes(value){
     })
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
 
     displayEventTypes("");
-    $("#eventFilter").on("change",function(){
+    $("#eventFilter").on("change", function () {
         var value = $(this).val();
         displayEventTypes(value);
     })
