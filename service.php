@@ -5,54 +5,58 @@
 <section class="white-section " id="testimonial-service">
   <div id="testimonial-carousel" class="carousel slide" data-ride="false">
     <div class="carousel-inner">
-      <div class="carousel-item container-fluid">
-        <h2 class="testimonial-text">Ac is directly accessible from guestroom corridors</h2>
+      <div class="carousel-item active container-fluid">
+        <h2 class="testimonial-text">Air conditioning can be conveniently accessed directly from the corridors adjoining
+          the guest rooms.</h2>
         <img class="testimonials-image" src="assets/picture/icons/air-conditioner.png" alt="Generic placeholder image">
         <em>Air Conditioning</em>
       </div>
-      <div class="carousel-item active container-fluid">
-        <h2 class="testimonial-text">We offers High-speed free Internet access is complimentary both in the rooms and
-          public areas</h2>
+      <div class="carousel-item container-fluid">
+        <h2 class="testimonial-text">Complimentary high-speed internet access is provided in both guest rooms and public
+          areas for the convenience of our guests.</h2>
         <img class='testimonials-image' src="assets/picture/icons/wifi.png" alt="dog-profile">
         <em>Free Wifi</em>
       </div>
       <div class="carousel-item container-fluid">
-        <h2 class="testimonial-text">Laguage storages for customer vacations</h2>
+        <h2 class="testimonial-text">Providing secure luggage storage solutions for our guests' vacation needs</h2>
         <img class="testimonials-image" src="assets/picture/icons/lockers.png" alt="Generic placeholder image">
         <em>Locking System</em>
       </div>
       <div class="carousel-item container-fluid">
-        <h2 class="testimonial-text">The hotel restaurant with both indoor and outdoor seating offers an open-buffet
-          breakfast</h2>
+        <h2 class="testimonial-text">The hotel's restaurant, featuring both indoor and outdoor seating options, provides
+          a delectable open-buffet breakfast experience</h2>
         <img class="testimonials-image" src="assets/picture/icons/hot-cup.png" alt="lady-profile">
         <em>Breakfast & Tea</em>
       </div>
       <div class="carousel-item container-fluid">
-        <h2 class="testimonial-text">After washing cloths your dresses are packed by ironing</h2>
+        <h2 class="testimonial-text">After laundering, your garments undergo meticulous ironing and are then expertly
+          folded and packaged for your convenience</h2>
         <img class="testimonials-image" src="assets/picture/icons/iron.png" alt="Generic placeholder image">
         <em>Room Services</em>
       </div>
       <div class="carousel-item container-fluid">
-        <h2 class="testimonial-text">The facility should include at least a range of basic equipment: a StairMaster, a
-          treadmill, a stationary bike, free weights, and floor mats</h2>
+        <h2 class="testimonial-text">The fitness facility is equipped with StairMasters, treadmills, stationary bikes,
+          and free-to-use weights and floor mats</h2>
         <img class="testimonials-image" src="assets/picture/icons/muscle.png" alt="Generic placeholder image">
-        <em>Heading</em>
+        <em>Fitness</em>
       </div>
       <div class="carousel-item container-fluid">
-        <h2 class="testimonial-text">Whether you book a hotel online, on the phone, or through a travel agent, it should
-          be a simple process</h2>
+        <h2 class="testimonial-text">Whether you make a hotel reservation online, via telephone, or with a
+          travel agency, the process will be straightforward and user-friendly</h2>
         <img class="testimonials-image" src="assets/picture/icons/online-appointment.png"
           alt="Generic placeholder image">
         <em>Online Services</em>
       </div>
       <div class="carousel-item container-fluid">
-        <h2 class="testimonial-text">Delivery time when promised; and no more than 30 minutes tops for impulse ordering
+        <h2 class="testimonial-text">We guarantee delivery within the specified timeframe as promised, with a maximum
+          waiting period of 30 minutes for impulse orders
         </h2>
         <img class="testimonials-image" src="assets/picture/icons/kitchen.png" alt="Generic placeholder image">
         <em>Kitchen services</em>
       </div>
       <div class="carousel-item container-fluid">
-        <h2 class="testimonial-text">We provide best laundry services to reduce customer works</h2>
+        <h2 class="testimonial-text">Premier laundry services aimed at alleviating the burdens of our esteemed
+          clientele, ensuring their utmost convenience and satisfaction</h2>
         <img class="testimonials-image" src="assets/picture/icons/laundry.png" alt="lady-profile">
         <em>Laundry Service</em>
       </div>
