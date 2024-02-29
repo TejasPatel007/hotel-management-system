@@ -16,7 +16,7 @@ if (isset($_POST['roomType'])) {
         case 2:
             $selectAllType = "select rt.*,count(rl.RoomId) as count_rooms
                                     from room_type rt inner join room_list rl on rt.RoomTypeId = rl.RoomTypeId 
-                                    where rl.Status='active' AND rt.Status='active' AND rt.Cost<=500
+                                    where rl.Status='active' AND rt.Status='active' AND rt.Cost<500
                                     group by rl.RoomTypeId ";
             break;
 
@@ -55,10 +55,10 @@ if (isset($_POST['roomType'])) {
                 '<div class="col-md-4 col-sm-6 ftco-animate fadeInUp ftco-animated">
             <div class="block-7">
             <form action="roomBooking.php" method= "POST">
-               <img class="img" src="../assets/picture/RoomType/' . $row['RoomImage'] . '" />
+               
                <div class="text-center p-4">
                    <span class="excerpt d-block">' . $row['RoomType'] . '</span>
-                   <span class="price mb-2"><sup>Rs</sup> <span class="number">' . $row['Cost'] . '</span> <sub>/per night</sub></span>
+                   <span class="price mb-2"><sup>USD</sup> <span class="number">' . $row['Cost'] . '</span> <sub>per night</sub></span>
                    <ul class="pricing-text mb-2">';
             if ($countOfRooms['avail_rooms'] == 0) {
                 $roomTypeCard .= '<li><span class="fa fa-close mr-2" style="color:red"></span> Available : ' . $countOfRooms['avail_rooms'] . '/' . $row['count_rooms'] . '</li> ';
@@ -318,10 +318,10 @@ if (isset($_POST['eventType'])) {
                 '<div class="col-md-4 col-sm-6 ftco-animate fadeInUp ftco-animated">
             <div class="block-7">
             <form action="eventBooking.php" method= "POST">
-               <img class="img" src="../assets/picture/EventType/' . $row['EventImage'] . '" />
+               
                <div class="text-center p-4">
                    <span class="excerpt d-block">' . $row['EventType'] . '</span>
-                   <span class="price mb-2"><sup>Rs</sup> <span class="number">' . $row['Cost'] . '</span> <sub>/per hour</sub></span>
+                   <span class="price mb-2"><sup>USD</sup> <span class="number">' . $row['Cost'] . '</span> <sub>per hour</sub></span>
                    <ul class="pricing-text mb-2">';
             if ($countOfRooms['avail_events'] == 0) {
                 $TypeCard .= '<li><span class="fa fa-close mr-2" style="color:red"></span> Available : ' . $countOfRooms['avail_events'] . '/' . $row['count_events'] . '</li> ';

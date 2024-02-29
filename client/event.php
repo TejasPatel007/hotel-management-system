@@ -18,7 +18,7 @@ if (!isset($_SESSION['loggedUserId'])) {
         <!-- Filter Drop down  -->
         <div class="float-right ">
             <select name="category" id="eventFilter" class="form-control custom-select bg-white border-md filter">
-                <option disabled="" selected="">FilterBy </option>
+                <option disabled="" selected="">FilterBy</option>
                 <option value="1">All</option>
                 <option value="2">below 1500</option>
                 <option value="3">Cost between 1500 and 2000</option>

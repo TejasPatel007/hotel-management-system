@@ -114,7 +114,7 @@ if (!isset($_SESSION['loggedUserId'])) {
           <!-- Filter Drop down  -->
           <div class="float-right filterBy">
             <select name="category" id="roomBookingFilter" class="form-control custom-select bg-white border-md filter">
-              <option disabled="" selected="">FilterBy </option>
+              <option disabled="" selected="">FilterBy</option>
               <option value="1">All Booking</option>
               <option value="2">Booked</option>
               <option value="3">Paid Booking</option>
@@ -142,7 +142,7 @@ if (!isset($_SESSION['loggedUserId'])) {
           <div class="float-right filterBy">
             <select name="eventBookingFilter" id="eventBookingFilter"
               class="form-control custom-select bg-white border-md filter">
-              <option disabled="" selected="">FilterBy </option>
+              <option disabled="" selected="">FilterBy</option>
               <option value="1">All Booking</option>
               <option value="2">Booked</option>
               <option value="3">Paid Booking</option>

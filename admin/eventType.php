@@ -156,7 +156,7 @@ if (!isset($_SESSION['loggedUserId'])) {
   <!-- Filter Drop down  -->
   <div class="float-right filterBy">
     <select name="category" id="eventTypeFilter" class="form-control custom-select bg-white border-md filter">
-      <option disabled="" selected="">FilterBy </option>
+      <option disabled="" selected="">FilterBy</option>
       <option value="1">All</option>
       <option value="2">Active</option>
       <option value="3">In-active</option>

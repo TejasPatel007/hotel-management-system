@@ -159,7 +159,7 @@ if (!isset($_SESSION['loggedUserId'])) {
   <!-- Filter Drop down  -->
   <div class="float-right filterBy">
     <select name="category" id="roomFilter" class="form-control custom-select bg-white border-md filter">
-      <option disabled="" selected="">FilterBy </option>
+      <option disabled="" selected="">FilterBy</option>
       <option value="">All</option>
       <option value="active">active</option>
       <option value="in-active">in-active</option>
