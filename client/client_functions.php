@@ -4,8 +4,8 @@ include("../include/functions.php");
 if (isset($_POST['bookRoom'])) {
 
   $roomTypeId = $_POST['roomTypeId'];
-  $email = $_POST['email'];
-  $contactno = $_POST['contactno'];
+  $email = '';
+  $contactno = '';
   $no_of_guest = $_POST['no_of_guest'];
   $checkIn = $_POST['checkIn'];
   $checkOut = $_POST['checkOut'];
@@ -17,6 +17,13 @@ if (isset($_POST['bookRoom'])) {
 
   $checkOut = strtotime($checkOut);
   $checkOut = date('Y-m-d', $checkOut);
+
+  $User_details = "SELECT * FROM users_details WHERE UserId='$userId'";
+  $result = mysqli_query($con, $User_details) or die("can't fetch");
+  while ($row = mysqli_fetch_assoc($result)) {
+    $email = $row['Email'];
+    $contactno = $row['ContactNo'];
+  }
 
   $query_roomType = "select * from room_list where RoomTypeId = '$roomTypeId' AND Status = 'active' order by RoomId";
   $roomType = mysqli_query($con, $query_roomType);
@@ -56,8 +63,8 @@ if (isset($_POST['bookRoom'])) {
 if (isset($_POST['bookEvent'])) {
 
   $eventTypeId = $_POST['eventTypeId'];
-  $email = $_POST['email'];
-  $contactno = $_POST['contactno'];
+  $email = '';
+  $contactno = '';
   $no_of_guest = $_POST['no_of_guest'];
   $eventDate = $_POST['eventDate'];
   $eventTime = $_POST['eventTime'];
@@ -69,6 +76,12 @@ if (isset($_POST['bookEvent'])) {
   $eventDate = strtotime($eventDate);
   $eventDate = date('Y-m-d', $eventDate);
 
+  $User_details = "SELECT * FROM users_details WHERE UserId='$userId'";
+  $result = mysqli_query($con, $User_details) or die("can't fetch");
+  while ($row = mysqli_fetch_assoc($result)) {
+    $email = $row['Email'];
+    $contactno = $row['ContactNo'];
+  }
 
   $query_eventType = "select * from event_list where EventTypeId = '$eventTypeId' AND Status = 'active' order by EventId";
   $Type = mysqli_query($con, $query_eventType);
@@ -167,8 +180,6 @@ if (isset($_POST['updateAccount'])) {
       echo json_encode($sendData);
 
     }
-
-
 
   }
 

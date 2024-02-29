@@ -1,41 +1,9 @@
 <section id="footer">
   <!-- Footer -->
   <footer class="text-center text-lg-start bg-dark text-white">
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-      <!-- Left -->
-      <div class="me-5 d-none d-lg-block">
-        <span>Get connected with us on social networks:</span>
-      </div>
-      <!-- Left -->
-
-      <!-- Right -->
-      <div>
-        <a href="" class="ml-4 text-reset">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="" class="ml-4 text-reset">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="" class="ml-4 text-reset">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="" class="ml-4 text-reset">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="" class="ml-4 text-reset">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="" class="ml-4 text-reset">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
 
     <!-- Section: Links  -->
-    <section class="sub-footer">
+    <section class="d-flex justify-content-center justify-content-lg-between p-2 border-bottom">
       <div class="container text-center text-md-start mt-5">
         <!-- Grid row -->
         <div class="row mt-3">
@@ -46,10 +14,21 @@
               <?php echo $general_setting['Name'] ?>
             </h6>
             <p>
-              Whether you book a hotel online, on the phone, or through a travel agent, it should be a simple process.
-              It should be easy to contact a knowledgeable, helpful person
-
+              <?php echo $general_setting['Description'] ?>
             </p>
+
+            <div>
+              <a href="https://instagram.com/tejaspatel9396" class="ml-4 text-reset">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/tejaspatel9396" class="ml-4 text-reset">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/TejasPatel007" class="ml-4 text-reset">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+
           </div>
           <!-- Grid column -->
 
@@ -63,7 +42,7 @@
               <a href="room.php" class="text-reset">Rooms</a>
             </p>
             <p>
-              <a href="event.php" class="text-reset">Meeting & Events</a>
+              <a href="../events.php" class="text-reset">Meeting & Events</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -89,13 +68,28 @@
             <h6 class="text-uppercase fw-bold mb-4">
               Contact
             </h6>
-            <p><i class="fas fa-home me-3"></i> Address:No. 63, Mount Road, Guindy,Chennai-India</p>
+            <p><i class="fas fa-home me-3"></i>
+              <a style="color: #ffffff; text-decoration: none;"
+                href="http://maps.google.com/?q=<?php echo $general_setting['Address_line1'] ?>, <?php echo $general_setting['City'] ?>, <?php echo $general_setting['State'] ?>, <?php echo $general_setting['Country'] ?> <?php echo $general_setting['Zip_code'] ?>">
+                <?php echo $general_setting['Address_line1'] ?>,
+                <?php echo $general_setting['City'] ?>,
+                <?php echo $general_setting['State'] ?>,
+                <?php echo $general_setting['Country'] ?>
+                <?php echo $general_setting['Zip_code'] ?>
+              </a>
+            </p>
             <p>
               <i class="fas fa-envelope me-3"></i>
-              elite@gmail.com
+              <a style="color: #ffffff; text-decoration: none;" href="mailto:<?php echo $general_setting['Email'] ?>">
+                <?php echo $general_setting['Email'] ?>
+              </a>
             </p>
-            <p><i class="fas fa-phone me-3"></i> + 9544 3220 00</p>
-            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+            <p><i class="fas fa-phone me-3"></i>
+              <a style="color: #ffffff; text-decoration: none;"
+                href="tel:<?php echo $general_setting['Phone_number'] ?>">
+                <?php echo $general_setting['Phone_number'] ?>
+              </a>
+            </p>
           </div>
           <!-- Grid column -->
         </div>

@@ -70,7 +70,7 @@ function showDetails(bookingId) {
              <li class="widget-49-meeting-item"><span>Event Time : ${bookingData.EventTime}</span></li>
              <li class="widget-49-meeting-item"><span>Package Limit : ${bookingData.Package} hrs</span></li>
              
-             <li class="widget-49-meeting-item"><span>Total Cost : <i class="fa fa-inr" aria-hidden="true"></i>${bookingData.Amount}</span></li>
+             <li class="widget-49-meeting-item"><span>Total Cost : <i class="fa fa-usd" aria-hidden="true"></i>${bookingData.Amount}</span></li>
      
              <li class="widget-49-meeting-item"><span>No of Guest : ${bookingData.NoOfGuest} </span></li>
              <li class="widget-49-meeting-item"><span>Email : ${bookingData.Email}</span></li>

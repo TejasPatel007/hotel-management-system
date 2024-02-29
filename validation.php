@@ -12,7 +12,7 @@ if (isset($_POST['user_login'])) {
 
     if (($row['Email'] == $email) && ($row['Password'] == $password)) {
         if ($row['is_admin'] == "1") {
-            header("Location:admin/dashboard.php?");
+            header("Location:admin/user.php?");
         } else {
             header("Location:index.php?");
         }

@@ -11,7 +11,7 @@ if (!isset($_SESSION['loggedUserId'])) {
     <div class="container">
         <div class="row justify-content-center pb-2">
             <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                <h2 class="my-3">Types of Events Available</h2>
+                <h2 class="my-3">Types of Events</h2>
             </div>
         </div>
 

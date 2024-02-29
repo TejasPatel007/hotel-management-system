@@ -365,33 +365,22 @@ if (isset($_POST['roomBooking'])) {
       if ($row['Status'] == "Booked") {
         $roomTable .= ' <td>
                           <a href="#" class="btn btn-primary btn-sm" onclick="setPaid(\'' . $row["BookingId"] . '\')">Pay</a>
-                          <a href="#" class="btn btn-danger btn-sm" onclick="confirm(\'Are you sure ? Do you want to Cancel this Booking \') && setReject(\'' . $row["BookingId"] . '\')">Cancel</a>
-                         
+                          <a href="#" class="btn btn-danger btn-sm" onclick="confirm(\'Are you sure ? Do you want to Cancel this Booking ? \') && setReject(\'' . $row["BookingId"] . '\')">Cancel</a>
                           </td>	 ';
       } else if ($row['Status'] == "Paid") {
-        $roomTable .= '<td><form action="../include/pdf.php" method="POST" >
-                              <input type="hidden" value="' . $row['BookingId'] . '"  name="bookingId" />
-                              <button type="submit" class="btn btn-primary btn-sm">Bill</button>
-                              </form>
-                              <button class="btn btn-secondary btn-sm" onclick="confirm(\'Are you sure ? Do you want to make available this room \') && setFree(\'' . $row["BookingId"] . '\')">Free</button>
-                            
-                              </td> 	 ';
+        $roomTable .= '<td>
+        <button class="btn btn-secondary btn-sm" onclick="confirm(\'Are you sure ? Do you want to make this room available ? \') && setFree(\'' . $row["BookingId"] . '\')">Free</button>
+        </td> 	 ';
       } else if ($row['Status'] == "Cancelled") {
-        $roomTable .= '       <td>
-                              
+        $roomTable .= '       <td>   
                               <span>Cancalled by Client</span>
                               </td>	';
       } else if ($row['Status'] == "Rejected") {
         $roomTable .= '         <td>
-                              
                               <span>Cancalled by Admin</span>
                               </td>	';
       } else {
-        $roomTable .= '<td><form action="../include/pdf.php" method="POST" >
-                              <input type="hidden" value="' . $row['BookingId'] . '"  name="bookingId" />
-                              <button type="submit" class="btn btn-primary btn-sm">Bill</button>
-                            
-                              </td></form> 	 ';
+        $roomTable .= '<td></td></form> 	 ';
       }
 
       $roomTable .= '  <td><button class="btn btn-light btn-sm"  name="showDetails" onclick=" showDetails(\'' . $row["BookingId"] . '\') "> View </button></td> </tr>';
@@ -487,7 +476,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
                                   inner join users_details us on us.Userid = rm.User_id 
-                                  where rp.PaymentType = 'Net Banking'
+                                  where rp.Amount < 5000
                                   order by rp.PaymentDate desc";
       break;
 
@@ -497,7 +486,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
                                   inner join users_details us on us.Userid = rm.User_id 
-                                  where rp.Amount < 5000
+                                  where rp.Amount  >= 5000 AND rp.Amount <=10000
                                   order by rp.PaymentDate desc";
       break;
 
@@ -507,21 +496,11 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
                                   inner join users_details us on us.Userid = rm.User_id 
-                                  where rp.Amount  >= 5000 AND rp.Amount <=10000
-                                  order by rp.PaymentDate desc";
-      break;
-
-    case 8:
-      $selectPayments = "SELECT rp.*,rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_payment rp
-                                  inner join room_booking rm on rp.BookingId = rm.BookingId
-                                  inner join room_list rl on rl.RoomId = rm.RoomId
-                                  inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                  inner join users_details us on us.Userid = rm.User_id 
                                   where rp.Amount  >= 10000 AND rp.Amount <=15000
                                   order by rp.PaymentDate desc";
       break;
 
-    case 9:
+    case 8:
       $selectPayments = "SELECT rp.*,rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_payment rp
                                   inner join room_booking rm on rp.BookingId = rm.BookingId
                                   inner join room_list rl on rl.RoomId = rm.RoomId
@@ -873,16 +852,11 @@ if (isset($_POST['eventBooking'])) {
       if ($row['Status'] == "Booked") {
         $eventTable .= ' <td>
                           <a href="#" class="btn btn-primary btn-sm" onclick="setPaid(\'' . $row["BookingId"] . '\')">Pay</a>
-                          <a href="#" class="btn btn-danger btn-sm" onclick="confirm(\'Are you sure ? Do you want to Cancel this Booking \') && setReject(\'' . $row["BookingId"] . '\')">Cancel</a>
+                          <a href="#" class="btn btn-danger btn-sm" onclick="confirm(\'Are you sure ? Do you want to Cancel this Booking ?\') && setReject(\'' . $row["BookingId"] . '\')">Cancel</a>
                          
                           </td>	 ';
       } else if ($row['Status'] == "Paid") {
-        $eventTable .= '<td><form action="../include/pdf.php" method="POST" >
-                              <input type="hidden" value="' . $row['BookingId'] . '"  name="eventBookingId" />
-                              <button type="submit" class="btn btn-primary btn-sm">Bill</button>
-                              </form>
-                              <button class="btn btn-secondary btn-sm" onclick="confirm(\'Are you sure ? Do you want to make available this event \') && setFree(\'' . $row["BookingId"] . '\')">Free</button>
-                            
+        $eventTable .= '<td><button class="btn btn-secondary btn-sm" onclick="confirm(\'Are you sure ? Do you want to make this event available?\') && setFree(\'' . $row["BookingId"] . '\')">Free</button>
                               </td> 	 ';
       } else if ($row['Status'] == "Cancelled") {
         $eventTable .= '       <td>
@@ -895,11 +869,7 @@ if (isset($_POST['eventBooking'])) {
                               <span>Cancalled by Admin</span>
                               </td>	';
       } else {
-        $eventTable .= '<td><form action="../include/pdf.php" method="POST" >
-                              <input type="hidden" value="' . $row['BookingId'] . '"  name="eventBookingId" />
-                              <button type="submit" class="btn btn-primary btn-sm">Bill</button>
-                            
-                              </td></form> 	 ';
+        $eventTable .= '<td></td></form> 	 ';
       }
 
       $eventTable .= '  <td><button class="btn btn-light btn-sm"  name="showDetails" onclick=" showDetails(\'' . $row["BookingId"] . '\') "> View </button></td> </tr>';
@@ -997,7 +967,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
                               inner join users_details us on us.Userid = em.User_id 
-                              where ep.PaymentType = 'Net Banking'
+                              where ep.Amount < 5000
                               order by ep.PaymentDate desc";
       break;
 
@@ -1007,7 +977,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
                               inner join users_details us on us.Userid = em.User_id 
-                              where ep.Amount < 5000
+                              where ep.Amount >= 5000 AND ep.Amount <=10000
                               order by ep.PaymentDate desc";
       break;
 
@@ -1017,21 +987,11 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
                               inner join users_details us on us.Userid = em.User_id 
-                              where ep.Amount >= 5000 AND ep.Amount <=10000
-                              order by ep.PaymentDate desc";
-      break;
-
-    case 8:
-      $selectPayments = "SELECT ep.*,em.*,et.EventType,el.HallNumber,us.FirstName FROM event_payment ep
-                              inner join event_booking em on ep.BookingId = em.BookingId
-                              inner join event_list el on el.EventId = em.EventId
-                              inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
                               where ep.Amount >= 10000 AND ep.Amount <=15000
                               order by ep.PaymentDate desc";
       break;
 
-    case 9:
+    case 8:
       $selectPayments = "SELECT ep.*,em.*,et.EventType,el.HallNumber,us.FirstName FROM event_payment ep
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId

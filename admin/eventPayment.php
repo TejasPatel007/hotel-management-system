@@ -18,11 +18,10 @@ if (!isset($_SESSION['loggedUserId'])) {
       <option value="2">Cash</option>
       <option value="3">Credit Card Payment</option>
       <option value="4">Debit Card payment</option>
-      <option value="5">Net banking</option>
-      <option value="6">Less than 5000</option>
-      <option value="7">between 5000 and 10000</option>
-      <option value="8">between 10000 and 15000</option>
-      <option value="9">Above 15000</option>
+      <option value="5">Less than 5000</option>
+      <option value="6">between 5000 and 10000</option>
+      <option value="7">between 10000 and 15000</option>
+      <option value="8">Above 15000</option>
     </select>
   </div>
   <!-- table for the display the content  -->

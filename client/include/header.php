@@ -83,7 +83,7 @@ ui-lightness/jquery-ui.css' rel='stylesheet'>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="room.php">Rooms</a>
                 <a class="dropdown-item" href="event.php">Events</a>
-                <a class="dropdown-item" href="mybooking.php">Mybooking</a>
+                <a class="dropdown-item" href="mybooking.php">My Bookings</a>
 
               </div>
             </li>
@@ -104,7 +104,6 @@ ui-lightness/jquery-ui.css' rel='stylesheet'>
                 <?php echo $user_details['FirstName']; ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="dashboard.php">Dashboard</a>
                 <a class="dropdown-item" href="account.php">Edit Profile</a>
                 <a class="dropdown-item" href="../destroy.php">Log Out</a>
               </div>

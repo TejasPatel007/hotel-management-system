@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 06:21 PM
+-- Generation Time: Feb 29, 2024 at 10:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -66,6 +66,13 @@ CREATE TABLE `event_booking` (
   `Status` enum('Rejected','Cancelled','Paid','Booked','CheckedOut') NOT NULL DEFAULT 'Booked'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `event_booking`
+--
+
+INSERT INTO `event_booking` (`BookingId`, `EventId`, `User_id`, `Date`, `Modified_date`, `Event_date`, `NoOfGuest`, `EventTime`, `Package`, `Amount`, `Email`, `Phone_number`, `Status`) VALUES
+(16, 29, 17, '2024-02-29', '2024-02-29 20:22:55', '2024-03-01', '200-250', '09:00:00', 8, 2800, 'patelt19@yopmail.com', 9082931783, 'Paid');
+
 -- --------------------------------------------------------
 
 --
@@ -87,7 +94,7 @@ CREATE TABLE `event_list` (
 INSERT INTO `event_list` (`EventId`, `EventTypeId`, `HallNumber`, `Status`, `Booking_status`) VALUES
 (27, 12, 123, 'active', 'Available'),
 (28, 12, 145, 'active', 'Available'),
-(29, 13, 223, 'active', 'Available'),
+(29, 13, 223, 'active', 'Booked'),
 (30, 13, 245, 'active', 'Available'),
 (31, 11, 323, 'active', 'Available'),
 (32, 11, 345, 'active', 'Available');
@@ -101,11 +108,18 @@ INSERT INTO `event_list` (`EventId`, `EventTypeId`, `HallNumber`, `Status`, `Boo
 CREATE TABLE `event_payment` (
   `PaymentId` bigint(10) NOT NULL,
   `BookingId` bigint(10) NOT NULL,
-  `PaymentType` enum('Cash','Net Banking','Credit Card','Debit Card') NOT NULL,
+  `PaymentType` enum('Cash','Credit Card','Debit Card') NOT NULL,
   `PaymentDate` date NOT NULL DEFAULT current_timestamp(),
   `Amount` int(50) NOT NULL,
   `Status` enum('Paid') NOT NULL DEFAULT 'Paid'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_payment`
+--
+
+INSERT INTO `event_payment` (`PaymentId`, `BookingId`, `PaymentType`, `PaymentDate`, `Amount`, `Status`) VALUES
+(4, 16, 'Credit Card', '2024-02-29', 2800, 'Paid');
 
 -- --------------------------------------------------------
 
@@ -179,6 +193,15 @@ CREATE TABLE `room_booking` (
   `Status` enum('Rejected','Cancelled','Paid','Booked','CheckedOut') NOT NULL DEFAULT 'Booked'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `room_booking`
+--
+
+INSERT INTO `room_booking` (`BookingId`, `RoomId`, `User_id`, `Date`, `Modified_date`, `CheckIn`, `CheckOut`, `NoOfGuest`, `Amount`, `Email`, `Phone_number`, `Status`) VALUES
+(35, 33, 17, '2024-02-29', '2024-02-29 20:20:43', '2024-03-01', '2024-03-04', '3', 1500, 'patelt19@yopmail.com', 9082931783, 'Paid'),
+(36, 39, 18, '2024-02-29', '2024-02-29 20:37:05', '2024-03-07', '2024-03-10', '5', 4500, 'patelt20@yopmail.com', 9082931784, 'Cancelled'),
+(37, 35, 19, '2024-02-29', '2024-02-29 21:05:00', '2024-03-01', '2024-03-03', '2', 250, 'patelt21@yopmail.com', 9082931785, 'Paid');
+
 -- --------------------------------------------------------
 
 --
@@ -198,9 +221,9 @@ CREATE TABLE `room_list` (
 --
 
 INSERT INTO `room_list` (`RoomId`, `RoomTypeId`, `RoomNumber`, `Status`, `Booking_status`) VALUES
-(33, 11, 11, 'active', 'Available'),
+(33, 11, 11, 'active', 'Booked'),
 (34, 11, 12, 'active', 'Available'),
-(35, 15, 21, 'active', 'Available'),
+(35, 15, 21, 'active', 'Booked'),
 (36, 15, 22, 'active', 'Available'),
 (37, 16, 31, 'active', 'Available'),
 (38, 16, 32, 'active', 'Available'),
@@ -225,6 +248,14 @@ CREATE TABLE `room_payment` (
   `Amount` int(50) NOT NULL,
   `Status` enum('Paid') NOT NULL DEFAULT 'Paid'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room_payment`
+--
+
+INSERT INTO `room_payment` (`PaymentId`, `BookingId`, `PaymentType`, `PaymentDate`, `Amount`, `Status`) VALUES
+(5, 35, 'Cash', '2024-02-29', 1500, 'Paid'),
+(6, 37, 'Debit Card', '2024-02-29', 250, 'Paid');
 
 -- --------------------------------------------------------
 
@@ -373,7 +404,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `event_booking`
 --
 ALTER TABLE `event_booking`
-  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `event_list`
@@ -385,7 +416,7 @@ ALTER TABLE `event_list`
 -- AUTO_INCREMENT for table `event_payment`
 --
 ALTER TABLE `event_payment`
-  MODIFY `PaymentId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `PaymentId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `event_type`
@@ -403,7 +434,7 @@ ALTER TABLE `general_settings`
 -- AUTO_INCREMENT for table `room_booking`
 --
 ALTER TABLE `room_booking`
-  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `room_list`
@@ -415,7 +446,7 @@ ALTER TABLE `room_list`
 -- AUTO_INCREMENT for table `room_payment`
 --
 ALTER TABLE `room_payment`
-  MODIFY `PaymentId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `PaymentId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `room_type`

@@ -32,7 +32,6 @@ if (!isset($_SESSION['loggedUserId'])) {
               required>
 
               <option value="Cash">Cash</option>
-              <option value="Net Banking">Net Banking</option>
               <option value="Credit Card">Credit Card</option>
               <option value="Debit Card">Debit Card</option>
             </select>

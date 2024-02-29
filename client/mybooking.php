@@ -30,7 +30,6 @@ if (!isset($_SESSION['loggedUserId'])) {
               required>
 
               <option value="Cash">Cash</option>
-              <option value="Net Banking">Net Banking</option>
               <option value="Credit Card">Credit Card</option>
               <option value="Debit Card">Debit Card</option>
             </select>
@@ -70,7 +69,6 @@ if (!isset($_SESSION['loggedUserId'])) {
               class="form-control custom-select bg-white border-md filter" required>
 
               <option value="Cash">Cash</option>
-              <option value="Net Banking">Net Banking</option>
               <option value="Credit Card">Credit Card</option>
               <option value="Debit Card">Debit Card</option>
             </select>
@@ -169,12 +167,7 @@ if (!isset($_SESSION['loggedUserId'])) {
   </div>
   </div>
 
-
-
-
 </section>
-
-
 
 <script src="js/mybookingRoom.js"></script>
 <script src="js/mybookingEvent.js"></script>

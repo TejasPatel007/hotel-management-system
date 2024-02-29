@@ -82,7 +82,6 @@ if(isset($_SESSION['loggedUserId'])) {
           <?php echo $user_details['FirstName']; ?>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="../../HMS/client/dashboard.php">Dashboard</a>
           <a class="dropdown-item" href="../../HMS/client/account.php">Edit Profile</a>
           <a class="dropdown-item" href="../../HMS/destroy.php">Log Out</a>
         </div>

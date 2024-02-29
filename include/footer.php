@@ -19,7 +19,6 @@
             </p>
 
             <div>
-
               <a href="https://instagram.com/tejaspatel9396" class="ml-4 text-reset">
                 <i class="fab fa-instagram"></i>
               </a>

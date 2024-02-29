@@ -65,7 +65,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <div class="input-group ">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-inr"></i>
+                                    <i class="fa fa-usd"></i>
                                 </span>
                             </div>
                             <input id="roomCost" type="text" value="<?php echo $row['Cost'] ?>" name="roomCost"
@@ -74,7 +74,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                     </div>
 
                     <!-- Email Address -->
-                    <div class="form-group col-lg-12 mb-4">
+                    <!-- <div class="form-group col-lg-12 mb-4">
 
                         <div class="ml-2">
                             <label for="email">Email Address</label>
@@ -88,10 +88,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                             <input id="email" type="email" name="email" placeholder="Email Address"
                                 class="form-control bg-white border-left-0 border-md" required>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Phone Number -->
-                    <div class="form-group col-lg-12 mb-4">
+                    <!-- <div class="form-group col-lg-12 mb-4">
 
                         <div class="ml-2">
                             <label for="phoneNumber">Phone Number</label>
@@ -107,7 +107,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                                 placeholder="Phone Number" class="form-control bg-white border-md border-left-0 pl-3"
                                 required>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <!-- number of guest -->
@@ -182,7 +182,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <div class="input-group ">
                             <div class="input-group-prepend">
                                 <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-inr"></i>
+                                    <i class="fa fa-usd"></i>
                                 </span>
                             </div>
                             <input id="totalCost" type="text" name="totalCost" value="0"
