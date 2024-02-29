@@ -82,19 +82,7 @@ if (!isset($_SESSION['loggedUserId'])) {
 
                 <input type="hidden" id="user_Id" name="updateAccount" value="<?php echo $_SESSION['loggedUserId']; ?>">
                 <div class="row">
-                    <div class="container mb-4">
-                        <div class="picture-container">
-                            <div class="picture">
-                                <img class="picture-src" id="updatePicture" title="" />
-                                <input type="file" id="wizardUpdate-picture" class="" name="profileImage" required>
-                            </div>
-                            <h6 class="">Choose Picture</h6>
-
-                        </div>
-
-                    </div>
-
-
+                    
                     <!-- First Name -->
                     <div class="input-group col-lg-6 mb-4">
                         <div class="ml-2">
@@ -110,8 +98,6 @@ if (!isset($_SESSION['loggedUserId'])) {
                                 class="form-control bg-white border-left-0 border-md" required>
                         </div>
                     </div>
-
-
 
                     <!-- Last Name -->
                     <div class="input-group col-lg-6 mb-4">

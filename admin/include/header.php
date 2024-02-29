@@ -6,7 +6,7 @@ include('../include/general.php');
 <html lang="en">
 
 <head>
-	<title>Sidebar 02</title>
+	<title>Admin</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,17 +15,16 @@ include('../include/general.php');
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../assets/css/adminPanel.css">
 
 	<!-- own styling  -->
+	<link rel="stylesheet" href="../assets/css/adminPanel.css">
 	<link rel="stylesheet" href="../assets/css/adminStyle.css">
 	<link rel="stylesheet" href="../assets/css/form_style.css">
 	<link rel="stylesheet" href="../assets/css/booking_card.css">
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../assets/css/datatables.min.css">
 
 	<!-- Jquery data tables pagination  -->
-	<link rel="stylesheet" type="text/css"
-		href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.2/datatables.min.css" />
 	<script type="text/javascript"
 		src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.6.0/dt-1.11.2/datatables.min.js"></script>
 	<script type="text/javascript"

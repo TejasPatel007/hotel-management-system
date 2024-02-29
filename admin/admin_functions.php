@@ -15,13 +15,6 @@ if (isset($_POST['firstname'])) {
     $password = mysqli_real_escape_string($con, $_POST['password']);
     $confirmPassword = mysqli_real_escape_string($con, $_POST['conformPassword']);
 
-
-    // profile image upload
-    $profileImageName = $_FILES["profileImage"]["name"];
-    $tempname = $_FILES["profileImage"]["tmp_name"];
-    $folder = "../assets/picture/profiles/" . $profileImageName;
-
-
     // $re_pass = base64_encode(mysqli_real_escape_string($conn, $_POST['reg_pass']));
 
     $User_details = "SELECT * FROM users_details WHERE Firstname='$firstname' OR Email='$email'";
@@ -74,27 +67,18 @@ if (isset($_POST['firstname'])) {
             } else {
 
                 // query validation
-                $insert = "insert into users_details (FirstName,LastName,Email,Password,ContactNo,Gender,ProfileImage) values('$firstname','$lastname','$email','$password','$contactno','$gender','$profileImageName') ";
+                $insert = "insert into users_details (FirstName,LastName,Email,Password,ContactNo,Gender) values('$firstname','$lastname','$email','$password','$contactno','$gender') ";
 
 
                 if (mysqli_query($con, $insert)) {
-                    if (!move_uploaded_file($tempname, $folder)) {
-                        //if(false){
-                        $error = "Error in Registration ...! Try after sometime";
-                        $sendData = array(
-                            "msg" => "",
-                            "error" => $error
-                        );
-                        echo json_encode($sendData);
-                    } else {
-                        $message = "User Added";
-                        // message("user.php","User Added");
-                        $sendData = array(
-                            "msg" => $message,
-                            "error" => ""
-                        );
-                        echo json_encode($sendData);
-                    }
+                    $message = "User Added";
+                    // message("user.php","User Added");
+                    $sendData = array(
+                        "msg" => $message,
+                        "error" => ""
+                    );
+                    echo json_encode($sendData);
+
                 } else {
                     $error = "Error in Registration ...! Try after sometime";
                     $sendData = array(
@@ -153,7 +137,7 @@ if (isset($_POST['userUpdateId'])) {
 }
 
 
-//update the datals of user table
+//update the datails of user table
 
 if (isset($_POST['updateUserID'])) {
 
@@ -164,12 +148,6 @@ if (isset($_POST['updateUserID'])) {
     $contactno = mysqli_real_escape_string($con, $_POST['contactno']);
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
     $status = mysqli_real_escape_string($con, $_POST['status']);
-
-    // profile image upload
-    $profileImageName = $_FILES["profileImage"]["name"];
-    $tempname = $_FILES["profileImage"]["tmp_name"];
-    $folder = "../assets/picture/profiles/" . $profileImageName;
-
 
     // $re_pass = base64_encode(mysqli_real_escape_string($conn, $_POST['reg_pass']));
 
@@ -198,27 +176,18 @@ if (isset($_POST['updateUserID'])) {
     } else {
 
         // query validation
-        $update = "UPDATE users_details SET  FirstName='$firstname', LastName ='$lastname',Email='$email',ContactNo='$contactno',Gender='$gender',Status='$status',ProfileImage='$profileImageName' where UserId = '$user_id'";
-
+        $update = "UPDATE users_details SET  FirstName='$firstname', LastName ='$lastname',Email='$email',ContactNo='$contactno',Gender='$gender',Status='$status' where UserId = '$user_id'";
 
         if (mysqli_query($con, $update)) {
-            if (!move_uploaded_file($tempname, $folder)) {
-                //if(false){
-                $error = "Error in Updation ...! Try after sometime";
-                $sendData = array(
-                    "msg" => "",
-                    "error" => $error
-                );
-                echo json_encode($sendData);
-            } else {
-                $message = "User details updated";
-                // message("user.php","User Added");
-                $sendData = array(
-                    "msg" => $message,
-                    "error" => ""
-                );
-                echo json_encode($sendData);
-            }
+
+            $message = "User details updated";
+            // message("user.php","User Added");
+            $sendData = array(
+                "msg" => $message,
+                "error" => ""
+            );
+            echo json_encode($sendData);
+
         } else {
             $error = "Error in Updation ...! Try after sometime";
             $sendData = array(
@@ -292,9 +261,6 @@ if (isset($_POST['roomTypeName'])) {
     $roomType = ucfirst($_POST['roomTypeName']);
     $roomCost = $_POST['roomCost'];
     $desc = $_POST['description'];
-    $fileName = $_FILES['roomTypeImage']['name'];
-    $tempname = $_FILES['roomTypeImage']['tmp_name'];
-    $folder = "../assets/picture/RoomType/" . $fileName;
 
     $sql_roomType = "select * from room_type where roomType like '$roomType'";
     $result_room = mysqli_query($con, $sql_roomType);
@@ -307,27 +273,16 @@ if (isset($_POST['roomTypeName'])) {
             "error" => "Room Type is already Exist"
         );
     } else {
-        $insert_query = "insert into room_type(RoomType,RoomImage,Cost,Description) values('$roomType','$fileName','$roomCost','$desc')";
+        $insert_query = "insert into room_type(RoomType,Cost,Description) values('$roomType','$roomCost','$desc')";
 
         if (mysqli_query($con, $insert_query)) {
 
-            if (!move_uploaded_file($tempname, $folder)) {
+            $message = "Room Type is Added";
+            $sendData = array(
+                "msg" => $message,
+                "error" => ""
+            );
 
-                $error = "Error in Adding ...! Try after sometime";
-                $sendData = array(
-                    "msg" => "",
-                    "error" => $error
-                );
-
-            } else {
-
-                $message = "Room Type is Added";
-                $sendData = array(
-                    "msg" => $message,
-                    "error" => ""
-                );
-
-            }
         } else {
 
             $error = "Error in Adding ...! Try after sometime";
@@ -395,9 +350,7 @@ if (isset($_POST['roomTypeId'])) {
     $roomCost = $_POST['editRoomCost'];
     $desc = $_POST['editDescription'];
     $status = $_POST['editStatus'];
-    $fileName = $_FILES['editRoomTypeImage']['name'];
-    $tempname = $_FILES['editRoomTypeImage']['tmp_name'];
-    $folder = "../assets/picture/RoomType/" . $fileName;
+
 
     $sql_roomType = "select * from room_type where roomTypeId = '$updateId'";
     $result_room = mysqli_query($con, $sql_roomType);
@@ -430,27 +383,18 @@ if (isset($_POST['roomTypeId'])) {
         } else {
 
 
-            $update = "UPDATE room_type SET  RoomType='$roomType', RoomImage ='$fileName',Description='$desc',Status='$status',Cost='$roomCost' where RoomTypeId = '$updateId'";
+            $update = "UPDATE room_type SET  RoomType='$roomType',Description='$desc',Status='$status',Cost='$roomCost' where RoomTypeId = '$updateId'";
 
 
             if (mysqli_query($con, $update)) {
-                if (!move_uploaded_file($tempname, $folder)) {
-                    //if(false){
-                    $error = "Error in Updation ...! Try after sometime";
-                    $sendData = array(
-                        "msg" => "",
-                        "error" => $error
-                    );
-                    echo json_encode($sendData);
-                } else {
-                    $message = "Room Type details updated";
-                    // message("user.php","User Added");
-                    $sendData = array(
-                        "msg" => $message,
-                        "error" => ""
-                    );
-                    echo json_encode($sendData);
-                }
+                $message = "Room Type details updated";
+                // message("user.php","User Added");
+                $sendData = array(
+                    "msg" => $message,
+                    "error" => ""
+                );
+                echo json_encode($sendData);
+
             } else {
                 $error = "Error in Updation ...! Try after sometime update";
                 $sendData = array(
@@ -648,9 +592,6 @@ if (isset($_POST['eventTypeName'])) {
     $eventType = ucfirst($_POST['eventTypeName']);
     $eventCost = $_POST['eventCost'];
     $desc = $_POST['description'];
-    $fileName = $_FILES['eventTypeImage']['name'];
-    $tempname = $_FILES['eventTypeImage']['tmp_name'];
-    $folder = "../assets/picture/EventType/" . $fileName;
 
     $sql_eventType = "select * from event_type where eventType like '$eventType'";
     $result_room = mysqli_query($con, $sql_eventType);
@@ -663,27 +604,17 @@ if (isset($_POST['eventTypeName'])) {
             "error" => "Event Type is already Exist"
         );
     } else {
-        $insert_query = "insert into event_type(EventType,EventImage,Cost,Description) values('$eventType','$fileName','$eventCost','$desc')";
+        $insert_query = "insert into event_type(EventType,Cost,Description) values('$eventType','$eventCost','$desc')";
 
         if (mysqli_query($con, $insert_query)) {
 
-            if (!move_uploaded_file($tempname, $folder)) {
+            $message = "Event Type is Added";
+            $sendData = array(
+                "msg" => $message,
+                "error" => ""
+            );
 
-                $error = "Error in Adding ...! Try after sometime";
-                $sendData = array(
-                    "msg" => "",
-                    "error" => $error
-                );
 
-            } else {
-
-                $message = "Event Type is Added";
-                $sendData = array(
-                    "msg" => $message,
-                    "error" => ""
-                );
-
-            }
         } else {
 
             $error = "Error in Adding ...! Try after sometime";
@@ -727,9 +658,6 @@ if (isset($_POST['editEventTypeName'])) {
     $Cost = $_POST['editEventCost'];
     $desc = $_POST['editDescription'];
     $status = $_POST['editStatus'];
-    $fileName = $_FILES['editEventTypeImage']['name'];
-    $tempname = $_FILES['editEventTypeImage']['tmp_name'];
-    $folder = "../assets/picture/EventType/" . $fileName;
 
     $sql_Type = "select * from event_type where EventtypeId = '$updateId'";
     $result = mysqli_query($con, $sql_Type);
@@ -762,27 +690,19 @@ if (isset($_POST['editEventTypeName'])) {
 
 
             // query validation
-            $update = "UPDATE event_type SET  EventType='$Type', EventImage ='$fileName', Description='$desc',Status='$status',Cost='$Cost' where EventTypeId = '$updateId'";
+            $update = "UPDATE event_type SET  EventType='$Type', Description='$desc',Status='$status',Cost='$Cost' where EventTypeId = '$updateId'";
 
 
             if (mysqli_query($con, $update)) {
-                if (!move_uploaded_file($tempname, $folder)) {
-                    //if(false){
-                    $error = "Error in Updation ...! Try after sometime";
-                    $sendData = array(
-                        "msg" => "",
-                        "error" => $error
-                    );
-                    echo json_encode($sendData);
-                } else {
-                    $message = "Event Type details updated";
-                    // message("user.php","User Added");
-                    $sendData = array(
-                        "msg" => $message,
-                        "error" => ""
-                    );
-                    echo json_encode($sendData);
-                }
+
+                $message = "Event Type details updated";
+                // message("user.php","User Added");
+                $sendData = array(
+                    "msg" => $message,
+                    "error" => ""
+                );
+                echo json_encode($sendData);
+
             } else {
                 $error = "Error in Updation ...! Try after sometime update";
                 $sendData = array(
@@ -1037,34 +957,20 @@ if (isset($_POST['updateAccount'])) {
     $contactno = mysqli_real_escape_string($con, $_POST['contactno']);
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
 
-    // profile image upload
-    $profileImageName = $_FILES["profileImage"]["name"];
-    $tempname = $_FILES["profileImage"]["tmp_name"];
-    $folder = "../assets/picture/profiles/" . $profileImageName;
-
-
     // query validation
-    $update = "UPDATE users_details SET  LastName ='$lastname',ContactNo='$contactno',Gender='$gender',ProfileImage='$profileImageName' where UserId = '$user_id'";
+    $update = "UPDATE users_details SET  LastName ='$lastname',ContactNo='$contactno',Gender='$gender' where UserId = '$user_id'";
 
 
     if (mysqli_query($con, $update)) {
-        if (!move_uploaded_file($tempname, $folder)) {
-            //if(false){
-            $error = "Error in Updation ...! Try after sometime";
-            $sendData = array(
-                "msg" => "",
-                "error" => $error
-            );
-            echo json_encode($sendData);
-        } else {
-            $message = "User details updated";
-            // message("user.php","User Added");
-            $sendData = array(
-                "msg" => $message,
-                "error" => ""
-            );
-            echo json_encode($sendData);
-        }
+
+        $message = "User details updated";
+        // message("user.php","User Added");
+        $sendData = array(
+            "msg" => $message,
+            "error" => ""
+        );
+        echo json_encode($sendData);
+
     } else {
         $error = "Error in Updation ...! Try after sometime";
         $sendData = array(

@@ -32,20 +32,7 @@ if (!isset($_SESSION['loggedUserId'])) {
                     <form id="model-addUser" method="POST" action="admin_functions.php" enctype="multipart/form-data"
                         autocomplete="off">
                         <div class="row">
-                            <div class="container mb-4">
-                                <div class="picture-container">
-                                    <div class="picture">
-                                        <img src="../assets/picture/icons/user.png" class="picture-src"
-                                            id="wizardPicturePreview" title="">
-                                        <input type="file" id="wizard-picture" class="" name="profileImage" required>
-                                    </div>
-                                    <h6 class="">Choose Picture</h6>
-
-                                </div>
-
-                            </div>
-
-
+                            
                             <!-- First Name -->
                             <div class="input-group col-lg-6 mb-4">
                                 <div class="input-group-prepend">
@@ -169,20 +156,7 @@ if (!isset($_SESSION['loggedUserId'])) {
                     <form id="model-updateUser" method="POST" action="admin_functions.php" enctype="multipart/form-data"
                         autocomplete="off">
                         <div class="row">
-                            <div class="container mb-4">
-                                <div class="picture-container">
-                                    <div class="picture">
-                                        <img class="picture-src" id="updatePicture" title="" />
-                                        <input type="file" id="wizardUpdate-picture" class="" name="profileImage"
-                                            required>
-                                    </div>
-                                    <h6 class="">Choose Picture</h6>
-
-                                </div>
-
-                            </div>
-
-
+                            
                             <!-- First Name -->
                             <div class="input-group col-lg-6 mb-4">
                                 <div class="input-group-prepend">

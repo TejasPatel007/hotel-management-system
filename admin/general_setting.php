@@ -70,7 +70,7 @@ if (!isset($_SESSION['loggedUserId'])) {
                             </span>
                         </div>
                         <input id="address2" type="text" name="address2"
-                            class="form-control bg-white border-left-0 border-md" required>
+                            class="form-control bg-white border-left-0 border-md">
                     </div>
                 </div>
                 <!-- Address -->
@@ -205,7 +205,7 @@ if (!isset($_SESSION['loggedUserId'])) {
 
 
                         <input id="teleNumber" type="tel" name="teleNumber" pattern="[0-9]{9}"
-                            class="form-control bg-white border-md border-left-0 pl-3" required>
+                            class="form-control bg-white border-md border-left-0 pl-3">
                     </div>
                 </div>
 

@@ -119,11 +119,6 @@ if (isset($_POST['updateAccount'])) {
   $contactno = mysqli_real_escape_string($con, $_POST['contactno']);
   $gender = mysqli_real_escape_string($con, $_POST['gender']);
 
-  // profile image upload
-  $profileImageName = $_FILES["profileImage"]["name"];
-  $tempname = $_FILES["profileImage"]["tmp_name"];
-  $folder = "../assets/picture/profiles/" . $profileImageName;
-
 
   // $re_pass = base64_encode(mysqli_real_escape_string($conn, $_POST['reg_pass']));
 
@@ -152,27 +147,17 @@ if (isset($_POST['updateAccount'])) {
   } else {
 
     // query validation
-    $update = "UPDATE users_details SET  FirstName='$firstname', LastName ='$lastname',Email='$email',ContactNo='$contactno',Gender='$gender',ProfileImage='$profileImageName' where UserId = '$user_id'";
+    $update = "UPDATE users_details SET  FirstName='$firstname', LastName ='$lastname',Email='$email',ContactNo='$contactno',Gender='$gender' where UserId = '$user_id'";
 
 
     if (mysqli_query($con, $update)) {
-      if (!move_uploaded_file($tempname, $folder)) {
-        //if(false){
-        $error = "Error in Updation ...! Try after sometime";
-        $sendData = array(
-          "msg" => "",
-          "error" => $error
-        );
-        echo json_encode($sendData);
-      } else {
-        $message = "User details updated";
-        // message("user.php","User Added");
-        $sendData = array(
-          "msg" => $message,
-          "error" => ""
-        );
-        echo json_encode($sendData);
-      }
+      $message = "User details updated";
+      // message("user.php","User Added");
+      $sendData = array(
+        "msg" => $message,
+        "error" => ""
+      );
+      echo json_encode($sendData);
     } else {
       $error = "Error in Updation ...! Try after sometime";
       $sendData = array(

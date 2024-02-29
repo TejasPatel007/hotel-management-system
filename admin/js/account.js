@@ -7,9 +7,6 @@ function editUser() {
     $.post('admin_functions.php', { userUpdateId: UserID }, function (data, status) {
         console.log(data);
         userData = JSON.parse(data);
-        var path = '../assets/picture/profiles/' + userData.ProfileImage;
-        console.log(path);
-        $('#updatePicture').attr("src", path);
         $('#updatelastName').val(userData.LastName);
         $('#updatephoneNumber').val(userData.ContactNo);
         $('#updategender').val(userData.Gender);

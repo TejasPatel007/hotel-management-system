@@ -30,20 +30,6 @@ if (!isset($_SESSION['loggedUserId'])) {
         <div class="modal-body">
           <form action="admin_functions.php" method="POST" id="modal-addEventType" autocomplete="off">
             <div class="row">
-              <!-- Event Type Image  -->
-              <div class="container mb-4">
-                <div class="picture-container">
-                  <div class="picture">
-                    <img src="../assets/picture/icons/addImage.png" class="picture-src" id="eventTypeImagePreview"
-                      title="">
-                    <input type="file" id="eventTypeImage" class="" name="eventTypeImage" required>
-                  </div>
-                  <h6 class="">Choose Picture</h6>
-
-                </div>
-
-              </div>
-
 
               <!-- Type name  -->
               <div class="input-group col-lg-11 ml-3 mb-4">
@@ -101,20 +87,6 @@ if (!isset($_SESSION['loggedUserId'])) {
         <div class="modal-body">
           <form action="admin_functions.php" method="POST" id="modal-editEventType" autocomplete="off">
             <div class="row">
-              <!-- Event Type Image  -->
-              <div class="container mb-4">
-                <div class="picture-container">
-                  <div class="picture">
-                    <img src="../assets/picture/icons/addImage.png" class="picture-src" id="eventTypeImagePreviewEdit"
-                      title="">
-                    <input type="file" id="editEventTypeImage" class="" name="editEventTypeImage" required>
-                  </div>
-                  <h6 class="">Choose Picture</h6>
-
-                </div>
-
-              </div>
-
 
               <!-- Type name  -->
               <div class="input-group col-lg-11 ml-3 mb-4">

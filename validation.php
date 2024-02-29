@@ -11,7 +11,7 @@ if (isset($_POST['user_login'])) {
     $row = mysqli_fetch_array($result);
 
     if (($row['Email'] == $email) && ($row['Password'] == $password)) {
-        if ($row['Email'] == "admin@gmail.com") {
+        if ($row['is_admin'] == "1") {
             header("Location:admin/dashboard.php?");
         } else {
             header("Location:index.php?");
@@ -20,7 +20,7 @@ if (isset($_POST['user_login'])) {
         $_SESSION['loggedUserName'] = $row['FirstName'];
         $_SESSION['loggedUserId'] = $row['UserId'];
     } else {
-        $error = "Invalid Username and Password !";
+        $error = "Invalid Username and/or Password!";
         error('login.php', $error);
     }
 }

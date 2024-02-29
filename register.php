@@ -12,15 +12,6 @@ if (isset($_POST['user_registration'])) {
     $confirmPassword = mysqli_real_escape_string($con, $_POST['conformPassword']);
 
 
-
-
-    // profile image upload
-    $profileImageName = $_FILES["profileImage"]["name"];
-    $tempname = $_FILES["profileImage"]["tmp_name"];
-    $folder = "assets/picture/profiles/" . $profileImageName;
-
-
-
     // $re_pass = base64_encode(mysqli_real_escape_string($conn, $_POST['reg_pass']));
 
     $User_details = "SELECT * FROM users_details WHERE Firstname='$firstname' OR Email='$email'";
@@ -57,15 +48,10 @@ if (isset($_POST['user_registration'])) {
             } else {
 
                 // query validation
-                $insert = "insert into users_details (FirstName,LastName,Email,Password,ContactNo,Gender,ProfileImage) values('$firstname','$lastname','$email','$password','$contactno','$gender','$profileImageName') ";
+                $insert = "insert into users_details (FirstName,LastName,Email,Password,ContactNo,Gender) values('$firstname','$lastname','$email','$password','$contactno','$gender') ";
 
                 if (mysqli_query($con, $insert)) {
-                    if (!move_uploaded_file($tempname, $folder)) {
-                        $error = "Error in Registration ...! Try after sometime";
-                        error("signup.php", $error);
-                    } else {
-                        header("Location:index.php");
-                    }
+                    header("Location:index.php");
                 } else {
                     $error = "Error in Registration ...! Try after sometime";
                     error("signup.php", $error);

@@ -18,7 +18,6 @@ if (isset($_POST['userFilter'])) {
         <table class="table table-hover " id="userTable">
 <thead class="thead-dark">
     <tr >
-      <th scope="col">Profile</th>
       <th scope="col">First name</th>
       <th scope="col">Last name</th>
       <th scope="col">Gender</th>
@@ -47,10 +46,6 @@ if (isset($_POST['userFilter'])) {
     while ($row = mysqli_fetch_assoc($allUser)) {
 
       $userTable .= ' <tr>
-                    <td><a href="../assets/picture/profiles/' . $row["ProfileImage"] . '" > 
-                    <img class="round-img" src="../assets/picture/profiles/' . $row["ProfileImage"] . '" alt="Profile"/>
-                    </a>
-                    </td>
                     <td>' . $row["FirstName"] . '</td>
                     <td>' . $row["LastName"] . '</td>
                     <td>' . $row["Gender"] . '</td>
@@ -78,35 +73,6 @@ if (isset($_POST['userFilter'])) {
 }
 
 
-//----------------------------------------------  Gallery Action -----------------------------------------
-if (isset($_POST['galleryFilter'])) {
-
-  $dirname = "../assets/picture/gallery/";
-  $images = glob($dirname . "*.*");
-  $returnData = '';
-  if (isset($_POST['msg'])) {
-    $returnData .= '<div class="col-12 alert alert-success" role="alert">' . $_POST["msg"] . ' </div>';
-  }
-  if (isset($_POST["error"])) {
-    $returnData .= '<div class="col-12 alert alert-danger">' . $_POST["error"] . '</div>';
-  }
-  foreach ($images as $image) {
-    $returnData .= ' <div class="col-sm-6 col-md-4 col-lg-3 item">
-              <div class="hovereffect">
-              <img class="img-responsive img-fluid gallery-images img-thumbnail" src="' . $image . '" alt="">
-              <div class="overlay">';
-    $returnData .= "    <a class='info' href='#'  onclick=\"confirm('Are you want to delete this image') && deleteImage('" . $image . "')\">Delete</a>
-              </div>
-              </div>
-          </div>";
-
-
-  }
-
-  echo $returnData;
-
-}
-
 //---------------------------------------------- Room Type table -----------------------------------------
 
 if (isset($_POST['roomTypeFilter'])) {
@@ -125,7 +91,6 @@ if (isset($_POST['roomTypeFilter'])) {
         <table class="table table-hover " id="userTable">
 <thead class="thead-dark">
     <tr >
-      <th scope="col">Image</th>
       <th scope="col">Type Name</th>
       <th scope="col">Cost</th>
       <th scope="col">Description</th>
@@ -174,21 +139,15 @@ if (isset($_POST['roomTypeFilter'])) {
     while ($row = mysqli_fetch_assoc($allType)) {
 
       $typeTable .= ' <tr>
-                    <td><a href="../assets/picture/RoomType/' . $row["RoomImage"] . '" > 
-                    <img class="round-img" src="../assets/picture/RoomType/' . $row["RoomImage"] . '" alt="Profile"/>
-                    </a>
-                    </td>
                     <td>' . $row["RoomType"] . '</td>
                     <td>' . $row["Cost"] . '</td>
                     <td>' . $row["Description"] . '</td>
                     <td>' . $row["Status"] . '</td>
-                   
                     <td>
                        
               <input type="hidden" name="userId" value="' . $row["RoomTypeId"] . '"/> ';
       $typeTable .= "<button class='btn btn-secondary'  name='EditUser' onclick=\" editRoomType('" . $row["RoomTypeId"] . "') \"> Edit </button>";
       $typeTable .= "<button class='btn btn-danger' name='deleteUser' onclick=\"confirm('Are you want to delete  " . $row["RoomType"] . "') && deleteRoomType('" . $row["RoomTypeId"] . "')\">Delete</button>
-                     
                     </td>
             </tr>";
     }
@@ -635,7 +594,6 @@ if (isset($_POST['eventTypeFilter'])) {
         <table class="table table-hover " id="userTable">
 <thead class="thead-dark">
     <tr >
-      <th scope="col">Image</th>
       <th scope="col">Type Name</th>
       <th scope="col">Cost</th>
       <th scope="col">Description</th>
@@ -684,10 +642,6 @@ if (isset($_POST['eventTypeFilter'])) {
     while ($row = mysqli_fetch_assoc($allType)) {
 
       $typeTable .= ' <tr>
-                    <td><a href="../assets/picture/EventType/' . $row["EventImage"] . '" > 
-                    <img class="round-img" src="../assets/picture/EventType/' . $row["EventImage"] . '" alt="Profile"/>
-                    </a>
-                    </td>
                     <td>' . $row["EventType"] . '</td>
                     <td>' . $row["Cost"] . '</td>
                     <td>' . $row["Description"] . '</td>
