@@ -201,8 +201,9 @@ if (isset($_POST["oldPassword"])) {
   $sendData = array();
   if ($num > 0) {
 
-    if ($old == $row['Password']) {
-      $Q_update = "UPDATE users_details us SET us.Password = '$new' Where UserId = '$ID'";
+    if (password_verify($old, $row['Password'])) {
+      $password_hash = password_hash($new, PASSWORD_BCRYPT);
+      $Q_update = "UPDATE users_details us SET us.Password = '$password_hash' Where UserId = '$ID'";
       $result = mysqli_query($con, $Q_update);
       $msg = "Password Changed";
       $sendData = array(

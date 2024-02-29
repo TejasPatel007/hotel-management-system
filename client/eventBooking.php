@@ -72,43 +72,6 @@ while ($row = mysqli_fetch_assoc($result)) {
                         </div>
                     </div>
 
-                    <!-- Email Address -->
-                    <!-- <div class="form-group col-lg-12 mb-4">
-
-                        <div class="ml-2">
-                            <label for="email">Email Address</label>
-                        </div>
-                        <div class="input-group ">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-envelope text-muted"></i>
-                                </span>
-                            </div>
-                            <input id="email" type="email" name="email" placeholder="Email Address"
-                                class="form-control bg-white border-left-0 border-md" required>
-                        </div>
-                    </div> -->
-
-                    <!-- Phone Number -->
-                    <!-- <div class="form-group col-lg-12 mb-4">
-
-                        <div class="ml-2">
-                            <label for="phoneNumber">Phone Number</label>
-                        </div>
-                        <div class="input-group ">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                    <i class="fa fa-phone-square text-muted"></i>
-                                </span>
-                            </div>
-
-                            <input id="contactno" type="tel" name="contactno" pattern="[789][0-9]{9}"
-                                placeholder="Phone Number" class="form-control bg-white border-md border-left-0 pl-3"
-                                required>
-                        </div>
-                    </div> -->
-
-
                     <!-- number of guest -->
                     <div class="form-group col-lg-12 mb-4">
 

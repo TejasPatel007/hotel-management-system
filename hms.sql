@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 10:17 PM
+-- Generation Time: Feb 29, 2024 at 11:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -71,7 +71,8 @@ CREATE TABLE `event_booking` (
 --
 
 INSERT INTO `event_booking` (`BookingId`, `EventId`, `User_id`, `Date`, `Modified_date`, `Event_date`, `NoOfGuest`, `EventTime`, `Package`, `Amount`, `Email`, `Phone_number`, `Status`) VALUES
-(16, 29, 17, '2024-02-29', '2024-02-29 20:22:55', '2024-03-01', '200-250', '09:00:00', 8, 2800, 'patelt19@yopmail.com', 9082931783, 'Paid');
+(16, 29, 17, '2024-02-29', '2024-02-29 20:22:55', '2024-03-01', '200-250', '09:00:00', 8, 2800, 'patelt19@yopmail.com', 9082931783, 'Paid'),
+(17, 27, 20, '2024-02-29', '2024-02-29 21:50:21', '2024-03-01', '200-250', '09:00:00', 4, 800, 'pateltejas6@yopmail.com', 9082931786, 'Booked');
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,7 @@ CREATE TABLE `event_list` (
 --
 
 INSERT INTO `event_list` (`EventId`, `EventTypeId`, `HallNumber`, `Status`, `Booking_status`) VALUES
-(27, 12, 123, 'active', 'Available'),
+(27, 12, 123, 'active', 'Booked'),
 (28, 12, 145, 'active', 'Available'),
 (29, 13, 223, 'active', 'Booked'),
 (30, 13, 245, 'active', 'Available'),
@@ -306,11 +307,12 @@ CREATE TABLE `users_details` (
 --
 
 INSERT INTO `users_details` (`UserId`, `FirstName`, `LastName`, `Email`, `Password`, `ContactNo`, `Gender`, `Status`, `is_admin`) VALUES
-(2, 'admin', 'Patel', 'admin@yopmail.com', 'admin', '9082931781', 'male', 'active', 1),
-(16, 'Tejas', 'Patel', 'patelt18@montclair.edu', 'tejas', '9082931782', 'male', 'active', 0),
-(17, 'Tejas1', 'Patel', 'patelt19@yopmail.com', 'tejas1', '9082931783', 'male', 'active', 0),
-(18, 'Tejas2', 'Patel', 'patelt20@yopmail.com', 'tejas2', '9082931784', 'male', 'active', 0),
-(19, 'Tejas3', 'Patel', 'patelt21@yopmail.com', 'tejas3', '9082931785', 'male', 'active', 0);
+(2, 'admin', 'Patel', 'admin@yopmail.com', '$2y$10$UUXIEX/N5GoaGrYPQIIfz.OOC1jE4V.p6VxWxcoGa91/xpY/fqDOC', '9082931781', 'male', 'active', 1),
+(16, 'Tejas1', 'Patel', 'pateltejas1@yopmail.com', '$2y$10$8CrbBiP.rB3iE8n2qT50Reh1bnWsJ.eoyKNLiZTjEKaYRlNDWkiia', '9082931782', 'male', 'active', 0),
+(17, 'Tejas2', 'Patel', 'pateltejas2@yopmail.com', '$2y$10$JJH5yQzRblIThX79FRbvmeoC7p2TX2pYdc3v6t6ZuhUE2nbEbt1Wm', '9082931783', 'male', 'active', 0),
+(18, 'Tejas3', 'Patel', 'pateltejas3@yopmail.com', '$2y$10$e/U27aTFN6pVARpM2lQMeeEe1zvYidV4GH6YabtG3.N7n703qTC72', '9082931784', 'male', 'active', 0),
+(19, 'Tejas4', 'Patel', 'pateltejas4@yopmail.com', '$2y$10$hA2qyChGZ.9c9zqCS/z9q.BxyqMRm6T86MMphKPQ794tO4zOq4SUK', '9082931785', 'male', 'active', 0),
+(20, 'Tejas6', 'Patel', 'pateltejas6@yopmail.com', '$2y$10$1QlB.JSHRev3USrBLZeq3OzVoekt6BUFMu3NkcezVG9y5gxU3u0aa', '9082931786', 'male', 'active', 0);
 
 --
 -- Indexes for dumped tables
@@ -404,7 +406,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `event_booking`
 --
 ALTER TABLE `event_booking`
-  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `event_list`
@@ -440,7 +442,7 @@ ALTER TABLE `room_booking`
 -- AUTO_INCREMENT for table `room_list`
 --
 ALTER TABLE `room_list`
-  MODIFY `RoomId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `RoomId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `room_payment`
@@ -452,13 +454,13 @@ ALTER TABLE `room_payment`
 -- AUTO_INCREMENT for table `room_type`
 --
 ALTER TABLE `room_type`
-  MODIFY `RoomTypeId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `RoomTypeId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users_details`
 --
 ALTER TABLE `users_details`
-  MODIFY `UserId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `UserId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

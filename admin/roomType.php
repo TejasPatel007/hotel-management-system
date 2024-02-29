@@ -8,9 +8,6 @@ if (!isset($_SESSION['loggedUserId'])) {
 
   <h2 class="mb-4">Room Type</h2>
 
-
-  <!-- Model For adding new User  -->
-
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-dark" id="addRoomTypeBtn">
     + Add New Room Type
@@ -165,7 +162,6 @@ if (!isset($_SESSION['loggedUserId'])) {
       <option value="6">Cost above 1000</option>
     </select>
   </div>
-
 
   <!-- table for the display the content  -->
   <div class="container-fluid" id="contentArea">

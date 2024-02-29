@@ -373,11 +373,11 @@ if (isset($_POST['roomBooking'])) {
         </td> 	 ';
       } else if ($row['Status'] == "Cancelled") {
         $roomTable .= '       <td>   
-                              <span>Cancalled by Client</span>
+                              <span>canceled by Client</span>
                               </td>	';
       } else if ($row['Status'] == "Rejected") {
         $roomTable .= '         <td>
-                              <span>Cancalled by Admin</span>
+                              <span>canceled by Admin</span>
                               </td>	';
       } else {
         $roomTable .= '<td></td></form> 	 ';
@@ -861,12 +861,12 @@ if (isset($_POST['eventBooking'])) {
       } else if ($row['Status'] == "Cancelled") {
         $eventTable .= '       <td>
                               
-                              <span>Cancalled by Client</span>
+                              <span>canceled by Client</span>
                               </td>	';
       } else if ($row['Status'] == "Rejected") {
         $eventTable .= '         <td>
                               
-                              <span>Cancalled by Admin</span>
+                              <span>canceled by Admin</span>
                               </td>	';
       } else {
         $eventTable .= '<td></td></form> 	 ';

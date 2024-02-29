@@ -65,9 +65,9 @@ if (isset($_POST['firstname'])) {
                 );
                 echo json_encode($sendData);
             } else {
-
+                $password_hash = password_hash($password, PASSWORD_BCRYPT);
                 // query validation
-                $insert = "insert into users_details (FirstName,LastName,Email,Password,ContactNo,Gender) values('$firstname','$lastname','$email','$password','$contactno','$gender') ";
+                $insert = "insert into users_details (FirstName,LastName,Email,Password,ContactNo,Gender) values('$firstname','$lastname','$email','$password_hash','$contactno','$gender') ";
 
 
                 if (mysqli_query($con, $insert)) {
@@ -584,51 +584,6 @@ if (isset($_POST['bookingDetail'])) {
     echo json_encode($response);
 }
 
-// -------------------------------------- Event Type Actions ---------------------------------
-
-//add new type of Event
-if (isset($_POST['eventTypeName'])) {
-
-    $eventType = ucfirst($_POST['eventTypeName']);
-    $eventCost = $_POST['eventCost'];
-    $desc = $_POST['description'];
-
-    $sql_eventType = "select * from event_type where eventType like '$eventType'";
-    $result_room = mysqli_query($con, $sql_eventType);
-    $num_events = mysqli_num_rows($result_room);
-
-    $sendData = array();
-    if ($num_events >= 1) {
-        $sendData = array(
-            "msg" => "",
-            "error" => "Event Type is already Exist"
-        );
-    } else {
-        $insert_query = "insert into event_type(EventType,Cost,Description) values('$eventType','$eventCost','$desc')";
-
-        if (mysqli_query($con, $insert_query)) {
-
-            $message = "Event Type is Added";
-            $sendData = array(
-                "msg" => $message,
-                "error" => ""
-            );
-
-
-        } else {
-
-            $error = "Error in Adding ...! Try after sometime";
-            $sendData = array(
-                "msg" => "",
-                "error" => $error
-            );
-
-        }
-    }
-    echo json_encode($sendData);
-}
-
-
 //update - getting the selected event type details
 
 if (isset($_POST['eventTypeUpdateId'])) {
@@ -1001,8 +956,9 @@ if (isset($_POST["oldPassword"])) {
     $sendData = array();
     if ($num > 0) {
 
-        if ($old == $row['Password']) {
-            $Q_update = "UPDATE users_details us SET us.Password = '$new' Where UserId = '$ID'";
+        if (password_verify($old, $row['Password'])) {
+            $password_hash = password_hash($new, PASSWORD_BCRYPT);
+            $Q_update = "UPDATE users_details us SET us.Password = '$password_hash' Where UserId = '$ID'";
             $result = mysqli_query($con, $Q_update);
             $msg = "Password Changed";
             $sendData = array(

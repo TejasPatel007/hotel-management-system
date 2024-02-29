@@ -8,9 +8,6 @@ if (!isset($_SESSION['loggedUserId'])) {
 
     <h2 class="mb-4">Users Details</h2>
 
-
-    <!-- Model For adding new User  -->
-
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-dark" id="addUserBtn">
         <i class="fa fa-user-plus" aria-hidden="true"></i> Add New User

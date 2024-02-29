@@ -46,9 +46,9 @@ if (isset($_POST['user_registration'])) {
                 $error = "Invalid password and confirm password !";
                 error("signup.php", $error);
             } else {
-
+                $password_hash = password_hash($password, PASSWORD_BCRYPT);
                 // query validation
-                $insert = "insert into users_details (FirstName,LastName,Email,Password,ContactNo,Gender) values('$firstname','$lastname','$email','$password','$contactno','$gender') ";
+                $insert = "insert into users_details (FirstName,LastName,Email,Password,ContactNo,Gender) values('$firstname','$lastname','$email','$password_hash','$contactno','$gender') ";
 
                 if (mysqli_query($con, $insert)) {
                     header("Location:index.php");
