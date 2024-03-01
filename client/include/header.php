@@ -92,7 +92,7 @@ ui-lightness/jquery-ui.css' rel='stylesheet'>
               <a class="nav-link" href="../events.php">Meeting & Events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../contact.php">Contact</a>
+              <a class="nav-link" href="../contact.php">Contact Us</a>
             </li>
           </ul>
 
@@ -140,7 +140,10 @@ ui-lightness/jquery-ui.css' rel='stylesheet'>
               <a class="nav-link" href="../events.php">Meeting & Events</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../contact.php">Contact</a>
+              <a class="nav-link" href="../mybooking.php">My Bookings</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../contact.php">Contact Us</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">

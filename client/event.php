@@ -16,10 +16,9 @@ include('include/header.php');
             <select name="category" id="eventFilter" class="form-control custom-select bg-white border-md filter">
                 <option disabled="" selected="">FilterBy</option>
                 <option value="1">All</option>
-                <option value="2">below 1500</option>
-                <option value="3">Cost between 1500 and 2000</option>
-                <option value="4">Cost between 2000 and 2500</option>
-                <option value="5">Cost above 2500</option>
+                <option value="2">below 250</option>
+                <option value="3">Cost between 250 and 500</option>
+                <option value="4">Cost above 500</option>
             </select>
         </div>
 

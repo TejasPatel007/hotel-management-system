@@ -98,19 +98,19 @@ if (isset($_POST['roomType'])) {
 // ------------------------------------ My Room Booking -------------------------------------
 if (isset($_POST['roomBooking'])) {
 
-    $roomBooking = '<br><br>';
+    $booking = '<br><br>';
 
     if (isset($_POST['msg'])) {
-        $roomBooking .= '<div class="alert alert-success" role="alert">' . $_POST["msg"] . ' </div>';
+        $booking .= '<div class="alert alert-success" role="alert">' . $_POST["msg"] . ' </div>';
     }
     if (isset($_POST["error"])) {
-        $roomBooking .= '<div class="alert alert-danger">' . $_POST["error"] . '</div>';
+        $booking .= '<div class="alert alert-danger">' . $_POST["error"] . '</div>';
     }
-    $roomBooking .= '<div class="row">';
+    $booking .= '<div class="row">';
 
-    $filter = $_POST['filter'];
+    $bookingTypeFilter = $_POST['filter'];
     $userId = $_SESSION['loggedUserId'];
-    switch ($filter) {
+    switch ($bookingTypeFilter) {
         case 1:
             $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber FROM
                                room_booking rm inner join room_list rl on rl.RoomId = rm.RoomId
@@ -165,7 +165,7 @@ if (isset($_POST['roomBooking'])) {
     if (mysqli_num_rows($all) >= 1) {
         while ($row = mysqli_fetch_assoc($all)) {
 
-            $roomBooking .= '
+            $booking .= '
                     <div id="roomBooking" class="col-lg-4 col-md-6" >
                         <div class="card card-margin">
                             <div class="card-header no-border">
@@ -175,19 +175,19 @@ if (isset($_POST['roomBooking'])) {
                                 <div class="widget-49">
                                     <div class="widget-49-title-wrapper">';
             if ($row['Status'] == "Booked") {
-                $roomBooking .= '   <div class="widget-49-date-primary"> ';
+                $booking .= '   <div class="widget-49-date-primary"> ';
             } else if ($row['Status'] == "Paid") {
-                $roomBooking .= '   <div class="widget-49-date-success"> ';
+                $booking .= '   <div class="widget-49-date-success"> ';
             } else if ($row['Status'] == "Cancelled") {
-                $roomBooking .= '   <div class="widget-49-date-warning"> ';
+                $booking .= '   <div class="widget-49-date-warning"> ';
             } else if ($row['Status'] == "Rejected") {
-                $roomBooking .= '   <div class="widget-49-date-danger"> ';
+                $booking .= '   <div class="widget-49-date-danger"> ';
             }
             //checked Out
             else {
-                $roomBooking .= '   <div class="widget-49-date-success"> ';
+                $booking .= '   <div class="widget-49-date-success"> ';
             }
-            $roomBooking .= '  
+            $booking .= '  
                                             <span class="widget-49-date-day">' . date('d', strtotime($row['Date'])) . '</span>
                                             <span class="widget-49-date-month">' . date('M', strtotime($row['Date'])) . '</span>
                                         </div>
@@ -210,49 +210,49 @@ if (isset($_POST['roomBooking'])) {
                                 
                                     </ul>';
             if ($row['Status'] == "Booked") {
-                $roomBooking .= ' <div class="time">
+                $booking .= ' <div class="time">
                                         <a href="#" class="btn btn-primary btn-sm" onclick="setPaid(\'' . $row["BookingId"] . '\')">Pay</a>
                                         <a href="#" class="btn btn-danger btn-sm" onclick="confirm(\'Are you sure ? Do you want to Cancel this Booking ? \') && setCancel(\'' . $row["BookingId"] . '\')">Cancel</a>
                                         <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                         </div>	 ';
             } else if ($row['Status'] == "Paid") {
-                $roomBooking .= '       <div class="time">
+                $booking .= '       <div class="time">
                                        
                                         <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                         </div>	';
             } else if ($row['Status'] == "Cancelled") {
-                $roomBooking .= '       <div class="time">
+                $booking .= '       <div class="time">
                                        
                                         <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                         </div>	';
             } else if ($row['Status'] == "Rejected") {
-                $roomBooking .= '       <div class="time">
+                $booking .= '       <div class="time">
                         
                                         <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                         </div>	';
             }
             //checked Out
             else {
-                $roomBooking .= '       <div class="time">
+                $booking .= '       <div class="time">
                         
                                         <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                         </div>	';
             }
 
-            $roomBooking .= ' </div>
+            $booking .= ' </div>
                             </div>
                         </div>
                     </div>';
         }
     } else {
 
-        $roomBooking .= '</div> <br><br>
+        $booking .= '</div> <br><br>
 
      <p class="col-12 text-center text-danger" >No Booked Rooms are available</p>'
         ;
 
     }
-    echo $roomBooking;
+    echo $booking;
 
 }
 
@@ -272,25 +272,19 @@ if (isset($_POST['eventType'])) {
         case 2:
             $selectAllType = "select et.*,count(el.EventId) as count_events
                                     from event_type et inner join event_list el on et.EventTypeId = el.EventTypeId 
-                                    where el.Status='active' AND et.Status='active' AND et.Cost <1500
+                                    where el.Status='active' AND et.Status='active' AND et.Cost <250
                                     group by el.EventTypeId ";
             break;
         case 3:
             $selectAllType = "select et.*,count(el.EventId) as count_events
                                     from event_type et inner join event_list el on et.EventTypeId = el.EventTypeId 
-                                    where el.Status='active' AND et.Status='active'  AND (et.Cost >= 1500  AND et.Cost <= 2000)
+                                    where el.Status='active' AND et.Status='active'  AND (et.Cost >= 250  AND et.Cost <= 500)
                                     group by el.EventTypeId ";
             break;
         case 4:
             $selectAllType = "select et.*,count(el.EventId) as count_events
                                     from event_type et inner join event_list el on et.EventTypeId = el.EventTypeId 
-                                    where el.Status='active' AND et.Status='active' AND (et.Cost >= 2000  AND et.Cost <= 2500)
-                                    group by el.EventTypeId ";
-            break;
-        case 5:
-            $selectAllType = "select et.*,count(el.EventId) as count_events
-                                    from event_type et inner join event_list el on et.EventTypeId = el.EventTypeId 
-                                    where el.Status='active' AND et.Status='active'  AND et.Cost >2500
+                                    where el.Status='active' AND et.Status='active' AND et.Cost >500
                                     group by el.EventTypeId ";
             break;
 
@@ -359,19 +353,19 @@ if (isset($_POST['eventType'])) {
 // ------------------------------------ My Event Booking -------------------------------------
 if (isset($_POST['eventBooking'])) {
 
-    $eventBooking = '<br><br>';
+    $booking = '<br><br>';
 
     if (isset($_POST['msg'])) {
-        $eventBooking .= '<div class="alert alert-success" role="alert">' . $_POST["msg"] . ' </div>';
+        $booking .= '<div class="alert alert-success" role="alert">' . $_POST["msg"] . ' </div>';
     }
     if (isset($_POST["error"])) {
-        $eventBooking .= '<div class="alert alert-danger">' . $_POST["error"] . '</div>';
+        $booking .= '<div class="alert alert-danger">' . $_POST["error"] . '</div>';
     }
-    $eventBooking .= '<div class="row">';
+    $booking .= '<div class="row">';
 
-    $filter = $_POST['filter'];
+    $bookingTypeFilter = $_POST['filter'];
     $userId = $_SESSION['loggedUserId'];
-    switch ($filter) {
+    switch ($bookingTypeFilter) {
         case 1:
             $selectBooking = "SELECT em.*,et.EventType,el.HallNumber FROM
                                 event_booking em inner join event_list el on el.EventId = em.EventId
@@ -431,7 +425,7 @@ if (isset($_POST['eventBooking'])) {
     if (mysqli_num_rows($all) >= 1) {
         while ($row = mysqli_fetch_assoc($all)) {
 
-            $eventBooking .= '
+            $booking .= '
                       <div id="eventBooking" class="col-lg-4 col-md-6" >
                           <div class="card card-margin">
                               <div class="card-header no-border">
@@ -441,19 +435,19 @@ if (isset($_POST['eventBooking'])) {
                                   <div class="widget-49">
                                       <div class="widget-49-title-wrapper">';
             if ($row['Status'] == "Booked") {
-                $eventBooking .= '   <div class="widget-49-date-primary"> ';
+                $booking .= '   <div class="widget-49-date-primary"> ';
             } else if ($row['Status'] == "Paid") {
-                $eventBooking .= '   <div class="widget-49-date-success"> ';
+                $booking .= '   <div class="widget-49-date-success"> ';
             } else if ($row['Status'] == "Cancelled") {
-                $eventBooking .= '   <div class="widget-49-date-warning"> ';
+                $booking .= '   <div class="widget-49-date-warning"> ';
             } else if ($row['Status'] == "Rejected") {
-                $eventBooking .= '   <div class="widget-49-date-danger"> ';
+                $booking .= '   <div class="widget-49-date-danger"> ';
             }
             //checked Out
             else {
-                $eventBooking .= '   <div class="widget-49-date-success"> ';
+                $booking .= '   <div class="widget-49-date-success"> ';
             }
-            $eventBooking .= '  
+            $booking .= '  
                                               <span class="widget-49-date-day">' . date('d', strtotime($row['Date'])) . '</span>
                                               <span class="widget-49-date-month">' . date('M', strtotime($row['Date'])) . '</span>
                                           </div>
@@ -477,49 +471,49 @@ if (isset($_POST['eventBooking'])) {
                                   
                                       </ul>';
             if ($row['Status'] == "Booked") {
-                $eventBooking .= ' <div class="time">
+                $booking .= ' <div class="time">
                                           <a href="#" class="btn btn-primary btn-sm" onclick="setEventPaid(\'' . $row["BookingId"] . '\')">Pay</a>
                                           <a href="#" class="btn btn-danger btn-sm" onclick="confirm(\'Are you sure ? Do you want to Cancel this Booking ?\') && setEventCancel(\'' . $row["BookingId"] . '\')">Cancel</a>
                                           <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                           </div>	 ';
             } else if ($row['Status'] == "Paid") {
-                $eventBooking .= '       <div class="time">
+                $booking .= '       <div class="time">
                                          
                                           <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                           </div>	';
             } else if ($row['Status'] == "Cancelled") {
-                $eventBooking .= '       <div class="time">
+                $booking .= '       <div class="time">
                                          
                                           <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                           </div>	';
             } else if ($row['Status'] == "Rejected") {
-                $eventBooking .= '       <div class="time">
+                $booking .= '       <div class="time">
                           
                                           <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                           </div>	';
             }
             //checked Out
             else {
-                $eventBooking .= '       <div class="time">
+                $booking .= '       <div class="time">
                           
                                           <span class="pull-right">Modified Date : ' . $row['Modified_date'] . '</span>
                                           </div>	';
             }
 
-            $eventBooking .= ' </div>
+            $booking .= ' </div>
                               </div>
                           </div>
                       </div>';
         }
     } else {
 
-        $eventBooking .= '</div> <br><br>
+        $booking .= '</div> <br><br>
   
        <p class="col-12 text-center text-danger" >No Booked Events are available</p>'
         ;
 
     }
-    echo $eventBooking;
+    echo $booking;
 
 }
 
