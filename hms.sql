@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2024 at 05:15 AM
+-- Generation Time: Mar 01, 2024 at 07:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,13 +36,6 @@ CREATE TABLE `contact` (
   `Email` text NOT NULL,
   `Message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `contact`
---
-
-INSERT INTO `contact` (`ID`, `FirstName`, `LastName`, `Email`, `Message`) VALUES
-(3, 'Tejas', 'Patel', 'patelt18@montclair.edu', 'Test');
 
 -- --------------------------------------------------------
 
@@ -107,13 +100,6 @@ CREATE TABLE `event_payment` (
   `Amount` int(50) NOT NULL,
   `Status` enum('Paid') NOT NULL DEFAULT 'Paid'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `event_payment`
---
-
-INSERT INTO `event_payment` (`PaymentId`, `BookingId`, `PaymentType`, `PaymentDate`, `Amount`, `Status`) VALUES
-(4, 16, 'Credit Card', '2024-02-29', 2800, 'Paid');
 
 -- --------------------------------------------------------
 
@@ -234,14 +220,6 @@ CREATE TABLE `room_payment` (
   `Amount` int(50) NOT NULL,
   `Status` enum('Paid') NOT NULL DEFAULT 'Paid'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `room_payment`
---
-
-INSERT INTO `room_payment` (`PaymentId`, `BookingId`, `PaymentType`, `PaymentDate`, `Amount`, `Status`) VALUES
-(5, 35, 'Cash', '2024-02-29', 1500, 'Paid'),
-(6, 37, 'Debit Card', '2024-02-29', 250, 'Paid');
 
 -- --------------------------------------------------------
 
@@ -389,7 +367,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `event_booking`
 --
 ALTER TABLE `event_booking`
-  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `event_list`
@@ -401,7 +379,7 @@ ALTER TABLE `event_list`
 -- AUTO_INCREMENT for table `event_payment`
 --
 ALTER TABLE `event_payment`
-  MODIFY `PaymentId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `PaymentId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `event_type`
@@ -419,7 +397,7 @@ ALTER TABLE `general_settings`
 -- AUTO_INCREMENT for table `room_booking`
 --
 ALTER TABLE `room_booking`
-  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `room_list`
@@ -431,7 +409,7 @@ ALTER TABLE `room_list`
 -- AUTO_INCREMENT for table `room_payment`
 --
 ALTER TABLE `room_payment`
-  MODIFY `PaymentId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `PaymentId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `room_type`
