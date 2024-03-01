@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 11:06 PM
+-- Generation Time: Mar 01, 2024 at 05:15 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,7 +53,7 @@ INSERT INTO `contact` (`ID`, `FirstName`, `LastName`, `Email`, `Message`) VALUES
 CREATE TABLE `event_booking` (
   `BookingId` bigint(10) NOT NULL,
   `EventId` bigint(10) NOT NULL,
-  `User_id` bigint(10) NOT NULL,
+  `User_id` bigint(10) DEFAULT NULL,
   `Date` date NOT NULL,
   `Modified_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `Event_date` date NOT NULL,
@@ -63,16 +63,9 @@ CREATE TABLE `event_booking` (
   `Amount` double NOT NULL,
   `Email` text NOT NULL,
   `Phone_number` bigint(10) NOT NULL,
-  `Status` enum('Rejected','Cancelled','Paid','Booked','CheckedOut') NOT NULL DEFAULT 'Booked'
+  `Status` enum('Rejected','Cancelled','Paid','Booked','CheckedOut') NOT NULL DEFAULT 'Booked',
+  `ref_id` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `event_booking`
---
-
-INSERT INTO `event_booking` (`BookingId`, `EventId`, `User_id`, `Date`, `Modified_date`, `Event_date`, `NoOfGuest`, `EventTime`, `Package`, `Amount`, `Email`, `Phone_number`, `Status`) VALUES
-(16, 29, 17, '2024-02-29', '2024-02-29 20:22:55', '2024-03-01', '200-250', '09:00:00', 8, 2800, 'patelt19@yopmail.com', 9082931783, 'Paid'),
-(17, 27, 20, '2024-02-29', '2024-02-29 21:50:21', '2024-03-01', '200-250', '09:00:00', 4, 800, 'pateltejas6@yopmail.com', 9082931786, 'Booked');
 
 -- --------------------------------------------------------
 
@@ -93,9 +86,9 @@ CREATE TABLE `event_list` (
 --
 
 INSERT INTO `event_list` (`EventId`, `EventTypeId`, `HallNumber`, `Status`, `Booking_status`) VALUES
-(27, 12, 123, 'active', 'Booked'),
+(27, 12, 123, 'active', 'Available'),
 (28, 12, 145, 'active', 'Available'),
-(29, 13, 223, 'active', 'Booked'),
+(29, 13, 223, 'active', 'Available'),
 (30, 13, 245, 'active', 'Available'),
 (31, 11, 323, 'active', 'Available'),
 (32, 11, 345, 'active', 'Available');
@@ -171,7 +164,7 @@ CREATE TABLE `general_settings` (
 --
 
 INSERT INTO `general_settings` (`ID`, `Name`, `Address_line1`, `Address_line2`, `City`, `State`, `Country`, `Zip_code`, `Email`, `Phone_number`, `Telephone_number`, `Description`) VALUES
-(1, 'Hotel NJ Delight', '11 Dayton Dr', '', 'Edison', 'New Jersey', 'USA', '08820', 'patelt18@montclair.edu', 9082931782, '', 'Book Hotel NJ Delight for different purposes. We have various rooms and conference halls for professional meetings.');
+(1, 'Tejas Hotel', '11 Dayton Dr', '', 'Edison', 'New Jersey', 'USA', '08820', 'patelt18@montclair.edu', 9082931782, '', 'Book Hotel NJ Delight for different purposes. We have various rooms and conference halls for professional meetings.');
 
 -- --------------------------------------------------------
 
@@ -182,7 +175,7 @@ INSERT INTO `general_settings` (`ID`, `Name`, `Address_line1`, `Address_line2`, 
 CREATE TABLE `room_booking` (
   `BookingId` bigint(10) NOT NULL,
   `RoomId` bigint(10) NOT NULL,
-  `User_id` bigint(10) NOT NULL,
+  `User_id` bigint(10) DEFAULT NULL,
   `Date` date NOT NULL,
   `Modified_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `CheckIn` date NOT NULL,
@@ -191,17 +184,9 @@ CREATE TABLE `room_booking` (
   `Amount` double NOT NULL,
   `Email` text NOT NULL,
   `Phone_number` bigint(10) NOT NULL,
-  `Status` enum('Rejected','Cancelled','Paid','Booked','CheckedOut') NOT NULL DEFAULT 'Booked'
+  `Status` enum('Rejected','Cancelled','Paid','Booked','CheckedOut') NOT NULL DEFAULT 'Booked',
+  `ref_id` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `room_booking`
---
-
-INSERT INTO `room_booking` (`BookingId`, `RoomId`, `User_id`, `Date`, `Modified_date`, `CheckIn`, `CheckOut`, `NoOfGuest`, `Amount`, `Email`, `Phone_number`, `Status`) VALUES
-(35, 33, 17, '2024-02-29', '2024-02-29 20:20:43', '2024-03-01', '2024-03-04', '3', 1500, 'patelt19@yopmail.com', 9082931783, 'Paid'),
-(36, 39, 18, '2024-02-29', '2024-02-29 20:37:05', '2024-03-07', '2024-03-10', '5', 4500, 'patelt20@yopmail.com', 9082931784, 'Cancelled'),
-(37, 35, 19, '2024-02-29', '2024-02-29 21:05:00', '2024-03-01', '2024-03-03', '2', 250, 'patelt21@yopmail.com', 9082931785, 'Paid');
 
 -- --------------------------------------------------------
 
@@ -222,9 +207,9 @@ CREATE TABLE `room_list` (
 --
 
 INSERT INTO `room_list` (`RoomId`, `RoomTypeId`, `RoomNumber`, `Status`, `Booking_status`) VALUES
-(33, 11, 11, 'active', 'Booked'),
+(33, 11, 11, 'active', 'Available'),
 (34, 11, 12, 'active', 'Available'),
-(35, 15, 21, 'active', 'Booked'),
+(35, 15, 21, 'active', 'Available'),
 (36, 15, 22, 'active', 'Available'),
 (37, 16, 31, 'active', 'Available'),
 (38, 16, 32, 'active', 'Available'),
@@ -329,7 +314,6 @@ ALTER TABLE `contact`
 --
 ALTER TABLE `event_booking`
   ADD PRIMARY KEY (`BookingId`),
-  ADD KEY `FK_User` (`User_id`),
   ADD KEY `FK_RoomBooking` (`EventId`);
 
 --
@@ -363,7 +347,6 @@ ALTER TABLE `general_settings`
 --
 ALTER TABLE `room_booking`
   ADD PRIMARY KEY (`BookingId`),
-  ADD KEY `FK_User` (`User_id`),
   ADD KEY `FK_RoomBooking` (`RoomId`);
 
 --
@@ -406,7 +389,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `event_booking`
 --
 ALTER TABLE `event_booking`
-  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `event_list`
@@ -436,7 +419,7 @@ ALTER TABLE `general_settings`
 -- AUTO_INCREMENT for table `room_booking`
 --
 ALTER TABLE `room_booking`
-  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `BookingId` bigint(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `room_list`
@@ -470,8 +453,7 @@ ALTER TABLE `users_details`
 -- Constraints for table `event_booking`
 --
 ALTER TABLE `event_booking`
-  ADD CONSTRAINT `FK_EventBooking` FOREIGN KEY (`EventId`) REFERENCES `event_list` (`EventId`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_UserBooking` FOREIGN KEY (`User_id`) REFERENCES `users_details` (`UserId`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_EventBooking` FOREIGN KEY (`EventId`) REFERENCES `event_list` (`EventId`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `event_list`
@@ -489,8 +471,7 @@ ALTER TABLE `event_payment`
 -- Constraints for table `room_booking`
 --
 ALTER TABLE `room_booking`
-  ADD CONSTRAINT `FK_RoomBooking` FOREIGN KEY (`RoomId`) REFERENCES `room_list` (`RoomId`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK_User` FOREIGN KEY (`User_id`) REFERENCES `users_details` (`UserId`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_RoomBooking` FOREIGN KEY (`RoomId`) REFERENCES `room_list` (`RoomId`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `room_list`

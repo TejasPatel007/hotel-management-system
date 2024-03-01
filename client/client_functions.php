@@ -1,16 +1,26 @@
 <?php
 
 include("../include/functions.php");
+
 if (isset($_POST['bookRoom'])) {
 
   $roomTypeId = $_POST['roomTypeId'];
   $email = '';
+  if (isset($_POST['email'])) {
+    $email = $_POST['email'];
+  }
   $contactno = '';
+  if (isset($_POST['contactno'])) {
+    $contactno = $_POST['contactno'];
+  }
   $no_of_guest = $_POST['no_of_guest'];
   $checkIn = $_POST['checkIn'];
   $checkOut = $_POST['checkOut'];
   $totalCost = $_POST['totalCost'];
-  $userId = $_SESSION['loggedUserId'];
+  $userId = 0;
+  if (isset($_SESSION['loggedUserId'])) {
+    $userId = $_SESSION['loggedUserId'];
+  }
 
   $checkIn = strtotime($checkIn);
   $checkIn = date('Y-m-d', $checkIn);
@@ -24,6 +34,7 @@ if (isset($_POST['bookRoom'])) {
     $email = $row['Email'];
     $contactno = $row['ContactNo'];
   }
+  $ref_id = substr(str_shuffle(MD5(microtime())), 0, 10);
 
   $query_roomType = "select * from room_list where RoomTypeId = '$roomTypeId' AND Status = 'active' order by RoomId";
   $roomType = mysqli_query($con, $query_roomType);
@@ -33,8 +44,8 @@ if (isset($_POST['bookRoom'])) {
       $ID = $row['RoomId'];
       if ($row['Booking_status'] == 'Available') {
         $flag = true;
-        $reg = "INSERT into room_booking (RoomId,User_id,Date,CheckIn,CheckOut,NoOfGuest,Amount,Email,Phone_number)
-            values('$ID','$userId',curdate(),'$checkIn','$checkOut','$no_of_guest','$totalCost','$email','$contactno') ";
+        $reg = "INSERT into room_booking (RoomId,User_id,Date,CheckIn,CheckOut,NoOfGuest,Amount,Email,Phone_number,ref_id)
+            values('$ID','$userId',curdate(),'$checkIn','$checkOut','$no_of_guest','$totalCost','$email','$contactno','$ref_id') ";
 
         $update_query = "UPDATE room_list SET Booking_status = 'Booked' where RoomId = '$ID'";
 
@@ -49,8 +60,9 @@ if (isset($_POST['bookRoom'])) {
       echo "<script>alert('Oops! Rooms are not available..'); window.location.href='room.php'; </script>";
 
     } else {
-
-      echo "<script>alert('Booking Successfull..'); window.location.href='mybooking.php'; </script>";
+      $_SESSION['BookingRefID'] = $ref_id;
+      $_SESSION['Email'] = $email;
+      echo "<script>window.location.href='room_booked.php'; </script>";
     }
 
   } else {
@@ -64,14 +76,24 @@ if (isset($_POST['bookEvent'])) {
 
   $eventTypeId = $_POST['eventTypeId'];
   $email = '';
+  if (isset($_POST['email'])) {
+    $email = $_POST['email'];
+  }
   $contactno = '';
+  if (isset($_POST['contactno'])) {
+    $contactno = $_POST['contactno'];
+  }
   $no_of_guest = $_POST['no_of_guest'];
   $eventDate = $_POST['eventDate'];
   $eventTime = $_POST['eventTime'];
   $eventTime = date("H:i", strtotime($eventTime));
   $total_hours = $_POST['total_hours'];
   $totalCost = $_POST['totalCost'];
-  $userId = $_SESSION['loggedUserId'];
+  $userId = 0;
+  if (isset($_SESSION['loggedUserId'])) {
+    $userId = $_SESSION['loggedUserId'];
+  }
+  $ref_id = substr(str_shuffle(MD5(microtime())), 0, 10);
 
   $eventDate = strtotime($eventDate);
   $eventDate = date('Y-m-d', $eventDate);
@@ -91,8 +113,8 @@ if (isset($_POST['bookEvent'])) {
       $ID = $row['EventId'];
       if ($row['Booking_status'] == 'Available') {
 
-        $reg = "INSERT into event_booking (EventId,User_id,Date,Event_date,NoOfGuest,EventTime,Package,Amount,Email,Phone_number)
-            values('$ID','$userId',curdate(),'$eventDate','$no_of_guest','$eventTime','$total_hours','$totalCost','$email','$contactno') ";
+        $reg = "INSERT into event_booking (EventId,User_id,Date,Event_date,NoOfGuest,EventTime,Package,Amount,Email,Phone_number,ref_id)
+            values('$ID','$userId',curdate(),'$eventDate','$no_of_guest','$eventTime','$total_hours','$totalCost','$email','$contactno','$ref_id') ";
 
         $update_query = "UPDATE event_list SET Booking_status = 'Booked' where EventId = '$ID'";
 
@@ -108,9 +130,9 @@ if (isset($_POST['bookEvent'])) {
       echo "<script>alert('Oops! Event hall are not available..'); window.location.href='event.php'; </script>";
 
     } else {
-
-      echo "<script>alert('Booking Successfull..');window.location.href='mybooking.php'; </script>";
-
+      $_SESSION['BookingRefID'] = $ref_id;
+      $_SESSION['Email'] = $email;
+      echo "<script>window.location.href='event_booked.php'; </script>";
     }
 
   } else {

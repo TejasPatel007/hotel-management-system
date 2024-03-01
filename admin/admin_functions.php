@@ -204,55 +204,6 @@ if (isset($_POST['updateUserID'])) {
 
 }
 
-// ------------------------------------- Gallery Actions -----------------------------------------------------
-
-if (isset($_FILES['galleryImage'])) {
-
-    $profileImageName = $_FILES["galleryImage"]["name"];
-    $tempname = $_FILES["galleryImage"]["tmp_name"];
-    $folder = "../assets/picture/gallery/" . $profileImageName;
-    $sendData = array();
-
-    if (!move_uploaded_file($tempname, $folder)) {
-
-        $error = "Error in Adding ...! Try after sometime";
-        $sendData = array(
-            "msg" => "",
-            "error" => $error
-        );
-
-    } else {
-
-        $message = "Image is Added";
-        $sendData = array(
-            "msg" => $message,
-            "error" => ""
-        );
-
-    }
-
-    echo json_encode($sendData);
-}
-
-
-if (isset($_POST['deleteImage'])) {
-
-    $filename = $_POST['Url'];
-    $sendData = array();
-    if (unlink($filename)) {
-        $sendData = array(
-            "msg" => "Image is Deleted",
-            "error" => ""
-        );
-    } else {
-        $sendData = array(
-            "msg" => "",
-            "error" => "Error in Deleting Images.."
-        );
-    }
-    echo json_encode($sendData);
-}
-
 // --------------------------------------- Room Type Action ----------------------------------------
 
 //add new type of room
@@ -566,7 +517,7 @@ if (isset($_POST['bookingDetail'])) {
     $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName,us.ContactNo FROM room_booking rm 
                         inner join room_list rl on rl.RoomId = rm.RoomId
                         inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                        inner join users_details us on us.Userid = rm.User_id 
+                        left join users_details us on us.Userid = rm.User_id 
                         where rm.BookingId = $ID ";
 
 
@@ -859,7 +810,7 @@ if (isset($_POST['eventBookingDetail'])) {
     $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName,us.ContactNo FROM event_booking em 
                       inner join event_list el on el.EventId = em.EventId
                       inner join event_type et on el.EventTypeId = et.EventTypeId 
-                      inner join users_details us on us.Userid = em.User_id 
+                      left join users_details us on us.Userid = em.User_id 
                       where em.BookingId = '$ID'";
 
 

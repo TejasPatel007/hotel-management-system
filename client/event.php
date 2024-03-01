@@ -1,10 +1,6 @@
 <?php
 
 include('include/header.php');
-if (!isset($_SESSION['loggedUserId'])) {
-    header('Location:../login.php');
-}
-
 ?>
 
 <section id="roomType" class="ftco-section bg-light">

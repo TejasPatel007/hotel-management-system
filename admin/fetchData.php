@@ -274,7 +274,7 @@ if (isset($_POST['roomBooking'])) {
       $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_booking rm 
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 order by rm.Date desc";
       break;
 
@@ -282,7 +282,7 @@ if (isset($_POST['roomBooking'])) {
       $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_booking rm 
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 where rm.Status = 'Booked'
                                 order by rm.Date desc";
       break;
@@ -291,7 +291,7 @@ if (isset($_POST['roomBooking'])) {
       $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_booking rm 
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 where rm.Status = 'Paid'
                                 order by rm.Date desc";
       break;
@@ -301,7 +301,7 @@ if (isset($_POST['roomBooking'])) {
       $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_booking rm 
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 where rm.Status = 'Cancelled'
                                 order by rm.Date desc";
       break;
@@ -310,7 +310,7 @@ if (isset($_POST['roomBooking'])) {
       $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_booking rm 
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 where rm.Status = 'Rejected'
                                 order by rm.Date desc";
       break;
@@ -319,7 +319,7 @@ if (isset($_POST['roomBooking'])) {
       $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_booking rm 
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 where rm.Checkout < CURDATE() AND  rm.Status = 'Paid'
                                 order by rm.Date desc";
       break;
@@ -328,7 +328,7 @@ if (isset($_POST['roomBooking'])) {
       $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_booking rm 
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 where  rm.Status = 'CheckedOut'
                                 order by rm.Date desc";
       break;
@@ -337,7 +337,7 @@ if (isset($_POST['roomBooking'])) {
       $selectBooking = "SELECT rm.*,rt.RoomType,rl.RoomNumber,us.FirstName FROM room_booking rm 
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 order by rm.Date desc";
       break;
 
@@ -373,11 +373,11 @@ if (isset($_POST['roomBooking'])) {
         </td> 	 ';
       } else if ($row['Status'] == "Cancelled") {
         $roomTable .= '       <td>   
-                              <span>canceled by Client</span>
+                              <span>Cancelled by Client</span>
                               </td>	';
       } else if ($row['Status'] == "Rejected") {
         $roomTable .= '         <td>
-                              <span>canceled by Admin</span>
+                              <span>Cancelled by Admin</span>
                               </td>	';
       } else {
         $roomTable .= '<td></td></form> 	 ';
@@ -436,7 +436,7 @@ if (isset($_POST['roomPayment'])) {
                                 inner join room_booking rm on rp.BookingId = rm.BookingId
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 order by rp.PaymentDate desc";
       break;
 
@@ -445,7 +445,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_booking rm on rp.BookingId = rm.BookingId
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                  inner join users_details us on us.Userid = rm.User_id 
+                                  left join users_details us on us.Userid = rm.User_id 
                                   where rp.PaymentType = 'Cash'
                                   order by rp.PaymentDate desc";
       break;
@@ -455,7 +455,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_booking rm on rp.BookingId = rm.BookingId
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                  inner join users_details us on us.Userid = rm.User_id 
+                                  left join users_details us on us.Userid = rm.User_id 
                                   where rp.PaymentType = 'Credit Card'
                                   order by rp.PaymentDate desc";
       break;
@@ -465,7 +465,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_booking rm on rp.BookingId = rm.BookingId
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                  inner join users_details us on us.Userid = rm.User_id 
+                                  left join users_details us on us.Userid = rm.User_id 
                                   where rp.PaymentType = 'Debit Card'
                                   order by rp.PaymentDate desc";
       break;
@@ -475,7 +475,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_booking rm on rp.BookingId = rm.BookingId
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                  inner join users_details us on us.Userid = rm.User_id 
+                                  left join users_details us on us.Userid = rm.User_id 
                                   where rp.Amount < 5000
                                   order by rp.PaymentDate desc";
       break;
@@ -485,7 +485,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_booking rm on rp.BookingId = rm.BookingId
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                  inner join users_details us on us.Userid = rm.User_id 
+                                  left join users_details us on us.Userid = rm.User_id 
                                   where rp.Amount  >= 5000 AND rp.Amount <=10000
                                   order by rp.PaymentDate desc";
       break;
@@ -495,7 +495,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_booking rm on rp.BookingId = rm.BookingId
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                  inner join users_details us on us.Userid = rm.User_id 
+                                  left join users_details us on us.Userid = rm.User_id 
                                   where rp.Amount  >= 10000 AND rp.Amount <=15000
                                   order by rp.PaymentDate desc";
       break;
@@ -505,7 +505,7 @@ if (isset($_POST['roomPayment'])) {
                                   inner join room_booking rm on rp.BookingId = rm.BookingId
                                   inner join room_list rl on rl.RoomId = rm.RoomId
                                   inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                  inner join users_details us on us.Userid = rm.User_id 
+                                  left join users_details us on us.Userid = rm.User_id 
                                   where rp.Amount  > 150000 
                                   order by rp.PaymentDate desc";
       break;
@@ -516,7 +516,7 @@ if (isset($_POST['roomPayment'])) {
                                 inner join room_booking rm on rp.BookingId = rm.BookingId
                                 inner join room_list rl on rl.RoomId = rm.RoomId
                                 inner join room_type rt on rl.RoomTypeId = rt.RoomTypeId 
-                                inner join users_details us on us.Userid = rm.User_id 
+                                left join users_details us on us.Userid = rm.User_id 
                                 order by rp.PaymentDate desc";
       break;
 
@@ -760,7 +760,7 @@ if (isset($_POST['eventBooking'])) {
       $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName FROM event_booking em 
                                 inner join event_list el on el.EventId = em.EventId
                                 inner join event_type et on el.EventTypeId = et.EventTypeId 
-                                inner join users_details us on us.Userid = em.User_id 
+                                left join users_details us on us.Userid = em.User_id 
                                 order by em.Date desc";
       break;
 
@@ -768,7 +768,7 @@ if (isset($_POST['eventBooking'])) {
       $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName FROM event_booking em 
                                 inner join event_list el on el.EventId = em.EventId
                                 inner join event_type et on el.EventTypeId = et.EventTypeId 
-                                inner join users_details us on us.Userid = em.User_id 
+                                left join users_details us on us.Userid = em.User_id 
                                 where em.Status = 'Booked'
                                 order by em.Date desc";
       break;
@@ -777,7 +777,7 @@ if (isset($_POST['eventBooking'])) {
       $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName FROM event_booking em 
                                 inner join event_list el on el.EventId = em.EventId
                                 inner join event_type et on el.EventTypeId = et.EventTypeId 
-                                inner join users_details us on us.Userid = em.User_id 
+                                left join users_details us on us.Userid = em.User_id 
                                 where em.Status = 'Paid'
                                 order by em.Date desc";
       break;
@@ -786,7 +786,7 @@ if (isset($_POST['eventBooking'])) {
       $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName FROM event_booking em 
                                 inner join event_list el on el.EventId = em.EventId
                                 inner join event_type et on el.EventTypeId = et.EventTypeId 
-                                inner join users_details us on us.Userid = em.User_id 
+                                left join users_details us on us.Userid = em.User_id 
                                 where em.Status = 'Cancelled'
                                 order by em.Date desc";
       break;
@@ -795,7 +795,7 @@ if (isset($_POST['eventBooking'])) {
       $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName FROM event_booking em 
                                 inner join event_list el on el.EventId = em.EventId
                                 inner join event_type et on el.EventTypeId = et.EventTypeId 
-                                inner join users_details us on us.Userid = em.User_id 
+                                left join users_details us on us.Userid = em.User_id 
                                 where em.Status = 'Rejected'
                                 order by em.Date desc";
       break;
@@ -805,7 +805,7 @@ if (isset($_POST['eventBooking'])) {
       $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName FROM event_booking em 
                                 inner join event_list el on el.EventId = em.EventId
                                 inner join event_type et on el.EventTypeId = et.EventTypeId 
-                                inner join users_details us on us.Userid = em.User_id 
+                                left join users_details us on us.Userid = em.User_id 
                                 where em.Status = 'Paid' And em.Event_date > CURDATE()
                                 order by em.Date desc";
       break;
@@ -815,7 +815,7 @@ if (isset($_POST['eventBooking'])) {
       $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName FROM event_booking em 
                                 inner join event_list el on el.EventId = em.EventId
                                 inner join event_type et on el.EventTypeId = et.EventTypeId 
-                                inner join users_details us on us.Userid = em.User_id 
+                                left join users_details us on us.Userid = em.User_id 
                                 where em.Status = 'CheckedOut'
                                 order by em.Date desc";
       break;
@@ -824,7 +824,7 @@ if (isset($_POST['eventBooking'])) {
       $selectBooking = "SELECT em.*,et.EventType,el.HallNumber,us.FirstName FROM event_booking em 
                                 inner join event_list el on el.EventId = em.EventId
                                 inner join event_type et on el.EventTypeId = et.EventTypeId 
-                                inner join users_details us on us.Userid = em.User_id 
+                                left join users_details us on us.Userid = em.User_id 
                                 order by em.Date desc";
       break;
 
@@ -861,12 +861,12 @@ if (isset($_POST['eventBooking'])) {
       } else if ($row['Status'] == "Cancelled") {
         $eventTable .= '       <td>
                               
-                              <span>canceled by Client</span>
+                              <span>Cancelled by Client</span>
                               </td>	';
       } else if ($row['Status'] == "Rejected") {
         $eventTable .= '         <td>
                               
-                              <span>canceled by Admin</span>
+                              <span>Cancelled by Admin</span>
                               </td>	';
       } else {
         $eventTable .= '<td></td></form> 	 ';
@@ -927,7 +927,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               order by ep.PaymentDate desc";
       break;
 
@@ -936,7 +936,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               where ep.PaymentType = 'Cash'
                               order by ep.PaymentDate desc";
       break;
@@ -946,7 +946,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               where ep.PaymentType = 'Credit Card'
                               order by ep.PaymentDate desc";
       break;
@@ -956,7 +956,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               where ep.PaymentType = 'Debit Card'
                               order by ep.PaymentDate desc";
       break;
@@ -966,7 +966,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               where ep.Amount < 5000
                               order by ep.PaymentDate desc";
       break;
@@ -976,7 +976,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               where ep.Amount >= 5000 AND ep.Amount <=10000
                               order by ep.PaymentDate desc";
       break;
@@ -986,7 +986,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               where ep.Amount >= 10000 AND ep.Amount <=15000
                               order by ep.PaymentDate desc";
       break;
@@ -996,7 +996,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on ep.BookingId = em.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on el.EventTypeId = et.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               where ep.Amount > 15000 
                               order by ep.PaymentDate desc";
       break;
@@ -1006,7 +1006,7 @@ if (isset($_POST['eventPayment'])) {
                               inner join event_booking em on em.BookingId = ep.BookingId
                               inner join event_list el on el.EventId = em.EventId
                               inner join event_type et on et.EventTypeId = el.EventTypeId 
-                              inner join users_details us on us.Userid = em.User_id 
+                              left join users_details us on us.Userid = em.User_id 
                               order by ep.PaymentDate desc";
       break;
   }
