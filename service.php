@@ -64,7 +64,7 @@
     <a class="carousel-control-prev " href="#testimonial-carousel" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon icon-black"></span>
     </a>
-    <a class="carousel-control-next text-dark" href="#testimonial-carousel" role="button" data-slide="next">
+    <a class="carousel-control-next " href="#testimonial-carousel" role="button" data-slide="next">
       <span class="carousel-control-next-icon icon-black"></span>
     </a>
   </div>

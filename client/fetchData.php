@@ -198,6 +198,7 @@ if (isset($_POST['roomBooking'])) {
                                         </div>
                                     </div>
                                     <ul class="widget-49-meeting-points">
+                                        <li class="widget-49-meeting-item"><span class="font-weight-bold ">Booking Reference ID : ' . $row['ref_id'] . '</span></li>
                                         <li class="widget-49-meeting-item"><span class="font-weight-bold ">Check-In Date : ' . $row['CheckIn'] . '</span></li>
                                         <li class="widget-49-meeting-item"><span class="font-weight-bold ">Check-Out Date : ' . $row['CheckOut'] . '</span></li>
                                         
@@ -458,6 +459,7 @@ if (isset($_POST['eventBooking'])) {
                                           </div>
                                       </div>
                                       <ul class="widget-49-meeting-points">
+                                          <li class="widget-49-meeting-item"><span class="font-weight-bold ">Booking Reference ID : ' . $row['ref_id'] . '</span></li>
                                           <li class="widget-49-meeting-item"><span class="font-weight-bold ">Event Date : ' . $row['Event_date'] . '</span></li>
                                           <li class="widget-49-meeting-item"><span class="font-weight-bold ">Event Time : ' . $row['EventTime'] . '</span></li>
                                           <li class="widget-49-meeting-item"><span class="font-weight-bold ">Package Limit : ' . $row['Package'] . ' hrs</span></li>
