@@ -6,7 +6,7 @@ The Hotel Management System website is a comprehensive platform designed to stre
  <h3>Admin :</h3>
    <p>Email : admin@yopmail.com<br>Password : admin</p>
  <h3>Client :</h3>
-   <p>Email : patelt19@yopmail.com<br>Password : tejas1</p>
+   <p>Email : pateltejas1@yopmail.com<br>Password : tejas1</p>
 
 ## Prerequisites
 1. Install XAMPP web server
@@ -29,6 +29,5 @@ The Hotel Management System website is a comprehensive platform designed to stre
 3. Extract all the files and move it to the 'htdocs' folder of your XAMPP directory under folder named 'hms'
 4. Start the Apache and MySQL in your XAMPP control panel
 5. Open your web browser and type 'localhost/phpmyadmin'
-6. In phpmyadmin page, create a new database from the left panel and name it as 'hms'
-7. Import the file 'hms.sql' inside your newly created database
+6. In phpmyadmin page, Import the file 'hms.sql', which will create new database named 'hms' with data
 8. Open a new tab and type 'localhost/hms' in the url of your browser
