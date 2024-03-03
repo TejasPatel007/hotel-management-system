@@ -26,8 +26,8 @@ The Hotel Reservation System website is a comprehensive platform designed to str
 ## Steps to run the project in your machine
 1. Download and install XAMPP in your machine
 2. Clone or download the repository
-3. Extract all the files and move it to the 'htdocs' folder of your XAMPP directory under folder named 'reservatiohrsn'
+3. Extract all the files and move it to the 'htdocs' folder of your XAMPP directory under folder named 'hrs'
 4. Start the Apache and MySQL in your XAMPP control panel
 5. Open your web browser and type 'localhost/phpmyadmin'
-6. In phpmyadmin page, Import the file 'reservatiohrsn.sql', which will create new database named 'reservatiohrsn' with data
-8. Open a new tab and type 'localhost/reservatiohrsn' in the url of your browser
+6. In phpmyadmin page, Import the file 'hrs.sql', which will create new database named 'hrs' with data
+8. Open a new tab and type 'localhost/hrs' in the url of your browser
