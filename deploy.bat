@@ -1,1 +1,1 @@
-Xcopy /E . C:\xampp\htdocs\HMS /Y > nul
+Xcopy /E . C:\xampp\htdocs\HRS /Y > nul
